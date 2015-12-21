@@ -1,0 +1,10 @@
+Code-Review+2: Jesse Pretorius <jesse.pretorius@rackspace.co.uk>
+Code-Review+1: Andreas Jaeger <jaegerandi@gmail.com>
+Code-Review+2: Hugh Saunders <hugh@wherenow.org>
+Workflow+1: Hugh Saunders <hugh@wherenow.org>
+Verified+2: Jenkins
+Submitted-by: Jenkins
+Submitted-at: Mon, 21 Dec 2015 11:21:48 +0000
+Reviewed-on: https://review.openstack.org/259613
+Project: openstack/openstack-ansible-pip_install
+Branch: refs/heads/master
