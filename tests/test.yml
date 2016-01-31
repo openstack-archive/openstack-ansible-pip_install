@@ -18,7 +18,6 @@
   connection: local
   roles:
     - role: "{{ rolename | basename }}"
-      pip_get_pip_url: "https://raw.github.com/pypa/pip/master/contrib/get-pip.py"
       # The $HOME directory is mocked to work with tox
       #  by defining the 'ansible_env' hash. This should
       #  NEVER be done outside of testing.

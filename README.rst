@@ -12,6 +12,6 @@ This role will install pip using the upstream pip.
       user: root
       roles:
         - role: "pip_install"
-          pip_get_pip_url: https://bootstrap.pypa.io/get-pip.py
+          pip_upstream_url: https://bootstrap.pypa.io/get-pip.py
           tags:
             - "pip-install"
