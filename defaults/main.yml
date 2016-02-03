@@ -25,3 +25,7 @@ pip_get_pip_options: ""
 # and even if a version is pulled from the internet, it's also the right version.
 pip_packages:
  - "pip>7,<8"
+
+# Validate Certificates when downloading pip. May be set to "no" when proxy server
+# is intercepting the certificates.
+pip_validate_certs: "yes"
