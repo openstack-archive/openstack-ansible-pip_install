@@ -18,11 +18,6 @@
   connection: local
   roles:
     - role: "{{ rolename | basename }}"
-      # The $HOME directory is mocked to work with tox
-      #  by defining the 'ansible_env' hash. This should
-      #  NEVER be done outside of testing.
-      ansible_env:  ## NEVER DO THIS OUTSIDE OF TESTING
-        HOME: "/tmp"
   post_tasks:
     - name: Check get-pip.py file
       stat:
@@ -30,11 +25,11 @@
       register: get_pip_file
     - name: Check .pip directory
       stat:
-        path: /tmp/.cache/pip
+        path: "{{ ansible_env.HOME}}/.cache/pip"
       register: pip_dir
     - name: Check selfcheck json file
       stat:
-        path: /tmp/.cache/pip/selfcheck.json
+        path: "{{ ansible_env.HOME}}/.cache/pip/selfcheck.json"
       register: pip_selfcheck_file
     - name: Get pip path
       command: which pip
