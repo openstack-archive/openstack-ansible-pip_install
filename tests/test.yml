@@ -16,6 +16,9 @@
 - name: Playbook for role testing
   hosts: localhost
   connection: local
+  vars:
+    pip_packages:
+      - "pip==8.0.3"
   roles:
     - role: "{{ rolename | basename }}"
   post_tasks:
@@ -33,9 +36,14 @@
       register: pip_selfcheck_file
     - name: Get pip path
       command: which pip
+      register: pip_path
+    - name: Get pip version
+      command: "{{ pip_path.stdout }} -V"
+      register: pip_version
     - name: Check role functions
       assert:
         that:
           - "get_pip_file.stat.exists"
           - "pip_dir.stat.isdir"
           - "pip_selfcheck_file.stat.exists"
+          - "'pip 8.0.3 ' in pip_version.stdout"
