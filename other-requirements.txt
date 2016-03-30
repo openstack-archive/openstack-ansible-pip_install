@@ -10,6 +10,8 @@
 # will fall back to installing its default packages which
 # will potentially be detrimental to the tests executed.
 
+libselinux-python [platform:rpm]
+
 # OpenStack-CI's Jenkins needs curl
 # TODO(odyssey4me) remove this once https://review.openstack.org/288634 has merged
 # and the disk images are rebuilt and redeployed.
