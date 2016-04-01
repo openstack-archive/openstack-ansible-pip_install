@@ -1,0 +1,10 @@
+Code-Review+2: Jesse Pretorius (odyssey4me) <jesse.pretorius@rackspace.co.uk>
+Code-Review+1: Amy Marrich (spotz) <amy.marrich@rackspace.com>
+Code-Review+2: Kevin Carter (cloudnull) <kevin.carter@rackspace.com>
+Workflow+1: Kevin Carter (cloudnull) <kevin.carter@rackspace.com>
+Verified+2: Jenkins
+Submitted-by: Jenkins
+Submitted-at: Fri, 01 Apr 2016 04:56:59 +0000
+Reviewed-on: https://review.openstack.org/296114
+Project: openstack/openstack-ansible-pip_install
+Branch: refs/heads/master
