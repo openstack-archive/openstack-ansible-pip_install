@@ -1,0 +1,9 @@
+Code-Review+2: Kevin Carter (cloudnull) <kevin.carter@rackspace.com>
+Code-Review+2: Jesse Pretorius (odyssey4me) <jesse.pretorius@rackspace.co.uk>
+Workflow+1: Jesse Pretorius (odyssey4me) <jesse.pretorius@rackspace.co.uk>
+Verified+2: Jenkins
+Submitted-by: Jenkins
+Submitted-at: Sat, 02 Apr 2016 23:06:06 +0000
+Reviewed-on: https://review.openstack.org/300791
+Project: openstack/openstack-ansible-pip_install
+Branch: refs/heads/stable/mitaka
