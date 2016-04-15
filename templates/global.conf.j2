@@ -1,0 +1,11 @@
+# {{ ansible_managed }}
+
+[global]
+{% if pip_lock_to_internal_repo %}
+no-index = true
+{% endif %}
+pre = {{ pip_enable_pre_releases }}
+timeout = {{ pip_timeout }}
+
+[install]
+upgrade = {{ pip_upgrade }}
