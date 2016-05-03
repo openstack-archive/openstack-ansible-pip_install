@@ -28,3 +28,22 @@ pip_packages: []
 # Validate Certificates when downloading pip. May be set to "no" when proxy server
 # is intercepting the certificates.
 pip_validate_certs: "yes"
+
+pip_lock_to_internal_repo: False
+
+# Options for pip global
+pip_enable_pre_releases: true
+pip_timeout: 120
+
+# Options for pip install
+pip_upgrade: true
+
+# Drop link files to lock down pip
+# Example:
+#   pip_links:
+#     - name: "openstack_release"
+#       link: "{{ openstack_repo_url }}/os-releases/{{ openstack_release }}/"
+pip_links: []
+
+## Tunable overrides
+pip_global_conf_overrides: {}
