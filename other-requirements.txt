@@ -11,3 +11,7 @@
 # will potentially be detrimental to the tests executed.
 
 libselinux-python [platform:rpm]
+
+# Requirements for Paramiko 2.0
+libssl-dev
+libffi-dev
