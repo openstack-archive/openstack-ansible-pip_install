@@ -17,7 +17,7 @@
   file:
     path: "{{ item }}"
     state: "directory"
-    group: "{{ ansible_user_id }}"
+    group: "{{ ansible_group_id|default(ansible_user_id) }}"
     owner: "{{ ansible_user_id }}"
   with_items:
     - "/opt"
@@ -33,7 +33,7 @@
     src: "selfcheck.json"
     dest: "{{ ansible_env.HOME }}/.cache/pip/selfcheck.json"
     owner: "{{ ansible_user_id }}"
-    group: "{{ ansible_user_id }}"
+    group: "{{ ansible_group_id|default(ansible_user_id) }}"
     mode: "0644"
   tags:
     - pip-files
@@ -43,7 +43,7 @@
     src: "global.conf.j2"
     dest: "{{ ansible_env.HOME }}/.pip/base/global.conf"
     owner: "{{ ansible_user_id }}"
-    group: "{{ ansible_user_id }}"
+    group: "{{ ansible_group_id|default(ansible_user_id) }}"
     mode: "0644"
     config_overrides: "{{ pip_global_conf_overrides }}"
     config_type: "ini"

@@ -17,7 +17,7 @@
   file:
     path: "{{ item }}"
     state: "directory"
-    group: "{{ ansible_user_id }}"
+    group: "{{ ansible_group_id|default(ansible_user_id) }}"
     owner: "{{ ansible_user_id }}"
   with_items:
     - "{{ ansible_env.HOME }}/.pip/links.d"
@@ -29,7 +29,7 @@
     src: "pip-link-build.py"
     dest: "{{ ansible_env.HOME }}/.pip/pip-link-build.py"
     owner: "{{ ansible_user_id }}"
-    group: "{{ ansible_user_id }}"
+    group: "{{ ansible_group_id|default(ansible_user_id) }}"
     mode: "0755"
   tags:
     - lock-pip-files
@@ -39,7 +39,7 @@
     src: "link_file.j2"
     dest: "{{ ansible_env.HOME }}/.pip/links.d/{{ item.name }}.link"
     owner: "{{ ansible_user_id }}"
-    group: "{{ ansible_user_id }}"
+    group: "{{ ansible_group_id|default(ansible_user_id) }}"
     mode: "{{ item.mode|default('0644') }}"
   with_items: pip_links
   tags:
