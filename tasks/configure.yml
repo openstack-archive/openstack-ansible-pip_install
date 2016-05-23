@@ -20,7 +20,6 @@
     group: "{{ ansible_user_id }}"
     owner: "{{ ansible_user_id }}"
   with_items:
-    - "/opt"
     - "{{ ansible_env.HOME }}/.cache"
     - "{{ ansible_env.HOME }}/.cache/pip"
     - "{{ ansible_env.HOME }}/.pip"
