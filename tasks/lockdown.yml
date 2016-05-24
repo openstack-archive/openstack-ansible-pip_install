@@ -15,12 +15,10 @@
 
 - name: Create pip links directory
   file:
-    path: "{{ item }}"
+    path: "{{ ansible_env.HOME }}/.pip/links.d"
     state: "directory"
     group: "{{ ansible_group_id|default(ansible_user_id) }}"
     owner: "{{ ansible_user_id }}"
-  with_items:
-    - "{{ ansible_env.HOME }}/.pip/links.d"
   tags:
     - lock-directories-pip
 
