@@ -1,0 +1,122 @@
+---
+# Copyright 2016, Logan Vig <logan2211@gmail.com>
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+- name: Get Modern PIP to local
+  local_action:
+    module: get_url
+    url: "{{ pip_upstream_url }}"
+    dest: "/tmp/get-pip.py"
+    force: "yes"
+    validate_certs: "{{ pip_validate_certs }}"
+  register: get_pip_local
+  until: get_pip_local | success
+  ignore_errors: True
+  retries: 5
+  delay: 2
+  run_once: yes
+  tags:
+    - pip-install-local
+    - pip-install-script
+
+- name: Get Modern PIP using fallback URL to local
+  local_action:
+    module: get_url
+    url: "{{ pip_fallback_url }}"
+    dest: "/tmp/get-pip.py"
+    force: "yes"
+    validate_certs: "{{ pip_validate_certs }}"
+  when: get_pip_local | failed
+  register: get_pip_local_fallback
+  until: get_pip_local_fallback | success
+  retries: 5
+  delay: 2
+  run_once: yes
+  tags:
+    - pip-install-local
+    - pip-install-script
+
+
+- name: Create local pip package cache
+  local_action:
+    module: file
+    path: "{{ pip_packages_tmp }}"
+    state: directory
+  run_once: yes
+  tags:
+    - pip-install-local
+
+- name: pip cache install files locally
+  local_action: shell python /tmp/get-pip.py -d '{{ pip_packages_tmp | quote }}' {{ pip_get_pip_options }} {{ pip_packages | map('quote') | join (' ') }}
+  register: pip_local_cache
+  until: pip_local_cache | success
+  retries: 3
+  delay: 2
+
+- name: Distribute the modern PIP installer
+  copy:
+    src: "/tmp/get-pip.py"
+    dest: "/opt/get-pip.py"
+  tags:
+    - pip-install-local
+    - pip-install-script
+
+- name: Distribute PIP install files
+  copy:
+    src: "{{ pip_packages_tmp }}/"
+    dest: "{{ pip_packages_tmp }}"
+  tags:
+    - pip-install-cache-distribute
+    - pip-install
+
+- name: Install PIP
+  shell: "python /opt/get-pip.py --no-index --find-links={{ pip_packages_tmp | quote }} {{ pip_get_pip_options }} {{ pip_packages | map('quote') | join (' ') }}"
+  ignore_errors: true
+  register: pip_install
+  until: pip_install | success
+  retries: 3
+  delay: 2
+
+- name: Install PIP (fall back mode)
+  shell: "python /opt/get-pip.py --isolated --no-index --find-links={{ pip_packages_tmp | quote }} {{ pip_get_pip_options }} {{ pip_packages | map('quote') | join (' ') }}"
+  when: pip_install.rc != 0
+  register: pip_install_fall_back
+  until: pip_install_fall_back | success
+  retries: 3
+  delay: 2
+
+- name: Clean up local get-pip.py
+  local_action:
+    module: file
+    path: "/tmp/get-pip.py"
+    state: absent
+  run_once: yes
+  tags:
+    - pip-install-cleanup
+
+- name: Clean up local install cache
+  local_action:
+    module: file
+    path: "{{ pip_packages_tmp }}"
+    state: absent
+  run_once: yes
+  tags:
+    - pip-install-cleanup
+
+- name: Clean up remote install files
+  file:
+    path: "{{ pip_packages_tmp }}"
+    state: absent
+  tags:
+  - pip-install-cleanup

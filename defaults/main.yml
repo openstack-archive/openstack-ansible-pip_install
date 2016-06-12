@@ -17,6 +17,12 @@
 pip_upstream_url: https://bootstrap.pypa.io/get-pip.py
 pip_fallback_url: https://raw.githubusercontent.com/pypa/get-pip/master/get-pip.py
 
+# Allow the deployer to force pip to download locally to the deployment host
+# and copy it to the remote container for installation. Useful for environments
+# where the containers lack internet access.
+pip_offline_install: false
+pip_packages_tmp: /tmp/pip_install
+
 # Additional options that you might want to pass to "get-pip.py" when installing pip.
 # Default `pip_get_pip_options` is an empty string.
 pip_get_pip_options: ""
