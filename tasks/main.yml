@@ -21,6 +21,12 @@
   when:
     - pip_lock_to_internal_repo | bool
 
-- include: install.yml
+- include: install_online.yml
+  when: not pip_offline_install | bool
+  tags:
+    - pip-install
+
+- include: install_offline.yml
+  when: pip_offline_install | bool
   tags:
     - pip-install
