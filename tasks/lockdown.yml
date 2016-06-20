@@ -39,7 +39,7 @@
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_group_id|default(ansible_user_id) }}"
     mode: "{{ item.mode|default('0644') }}"
-  with_items: pip_links
+  with_items: "{{ pip_links }}"
   tags:
     - lock-pip-files
 
