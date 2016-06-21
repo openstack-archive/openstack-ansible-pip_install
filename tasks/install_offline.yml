@@ -51,14 +51,14 @@
 - name: Create local pip package cache
   local_action:
     module: file
-    path: "{{ pip_packages_tmp }}"
+    path: "{{ pip_tmp_packages }}"
     state: directory
   run_once: yes
   tags:
     - pip-install-local
 
 - name: pip cache install files locally
-  local_action: shell python /tmp/get-pip.py -d '{{ pip_packages_tmp | quote }}' {{ pip_get_pip_options }} {{ pip_packages | map('quote') | join (' ') }}
+  local_action: shell python /tmp/get-pip.py -d '{{ pip_tmp_packages | quote }}' {{ pip_get_pip_options }} {{ pip_packages | map('quote') | join (' ') }}
   register: pip_local_cache
   until: pip_local_cache | success
   retries: 3
@@ -74,14 +74,14 @@
 
 - name: Distribute PIP install files
   copy:
-    src: "{{ pip_packages_tmp }}/"
-    dest: "{{ pip_packages_tmp }}"
+    src: "{{ pip_tmp_packages }}/"
+    dest: "{{ pip_tmp_packages }}"
   tags:
     - pip-install-cache-distribute
     - pip-install
 
 - name: Install PIP
-  shell: "python /opt/get-pip.py --no-index --find-links={{ pip_packages_tmp | quote }} {{ pip_get_pip_options }} {{ pip_packages | map('quote') | join (' ') }}"
+  shell: "python /opt/get-pip.py --no-index --find-links={{ pip_tmp_packages | quote }} {{ pip_get_pip_options }} {{ pip_packages | map('quote') | join (' ') }}"
   ignore_errors: true
   register: pip_install
   until: pip_install | success
@@ -89,7 +89,7 @@
   delay: 2
 
 - name: Install PIP (fall back mode)
-  shell: "python /opt/get-pip.py --isolated --no-index --find-links={{ pip_packages_tmp | quote }} {{ pip_get_pip_options }} {{ pip_packages | map('quote') | join (' ') }}"
+  shell: "python /opt/get-pip.py --isolated --no-index --find-links={{ pip_tmp_packages | quote }} {{ pip_get_pip_options }} {{ pip_packages | map('quote') | join (' ') }}"
   when: pip_install.rc != 0
   register: pip_install_fall_back
   until: pip_install_fall_back | success
@@ -108,7 +108,7 @@
 - name: Clean up local install cache
   local_action:
     module: file
-    path: "{{ pip_packages_tmp }}"
+    path: "{{ pip_tmp_packages }}"
     state: absent
   run_once: yes
   tags:
@@ -116,7 +116,7 @@
 
 - name: Clean up remote install files
   file:
-    path: "{{ pip_packages_tmp }}"
+    path: "{{ pip_tmp_packages }}"
     state: absent
   tags:
   - pip-install-cleanup
