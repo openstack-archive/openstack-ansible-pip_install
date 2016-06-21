@@ -1,0 +1,9 @@
+Code-Review+1: Nolan Brubaker <nolan.brubaker@rackspace.com>
+Code-Review+2: Jesse Pretorius (odyssey4me) <jesse.pretorius@rackspace.co.uk>
+Workflow+1: Jesse Pretorius (odyssey4me) <jesse.pretorius@rackspace.co.uk>
+Verified+2: Jenkins
+Submitted-by: Jenkins
+Submitted-at: Tue, 21 Jun 2016 08:54:37 +0000
+Reviewed-on: https://review.openstack.org/331908
+Project: openstack/openstack-ansible-pip_install
+Branch: refs/heads/master
