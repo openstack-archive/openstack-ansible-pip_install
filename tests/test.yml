@@ -22,10 +22,6 @@
   roles:
     - role: "{{ rolename | basename }}"
   post_tasks:
-    - name: Check get-pip.py file
-      stat:
-        path: /opt/get-pip.py
-      register: get_pip_file
     - name: Check .pip directory
       stat:
         path: "{{ ansible_env.HOME}}/.cache/pip"
@@ -43,7 +39,6 @@
     - name: Check role functions
       assert:
         that:
-          - "get_pip_file.stat.exists"
           - "pip_dir.stat.isdir"
           - "pip_selfcheck_file.stat.exists"
-          - "'pip 8.0.3 ' in pip_version.stdout"
+          - "pip_version.stdout | search('8.0.3')"

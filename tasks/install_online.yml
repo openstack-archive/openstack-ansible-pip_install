@@ -41,18 +41,4 @@
   tags:
     - pip-install-script
 
-- name: Install PIP
-  shell: "python /opt/get-pip.py {{ pip_get_pip_options }} {{ pip_packages | map('quote') | join (' ') }}"
-  ignore_errors: true
-  register: pip_install
-  until: pip_install | success
-  retries: 3
-  delay: 2
-
-- name: Install PIP (fall back mode)
-  shell: "python /opt/get-pip.py --isolated {{ pip_get_pip_options }} {{ pip_packages | map('quote') | join (' ') }}"
-  when: pip_install.rc != 0
-  register: pip_install_fall_back
-  until: pip_install_fall_back | success
-  retries: 3
-  delay: 2
+- include: install_source.yml

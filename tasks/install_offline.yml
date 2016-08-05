@@ -58,7 +58,8 @@
     - pip-install-local
 
 - name: pip cache install files locally
-  local_action: shell python /tmp/get-pip.py -d '{{ pip_tmp_packages | quote }}' {{ pip_get_pip_options }} {{ pip_packages | map('quote') | join (' ') }}
+  local_action: >
+    shell python /tmp/get-pip.py -d '{{ pip_tmp_packages | quote }}' {{ pip_get_pip_options }} {{ pip_packages | map('quote') | join (' ') }}
   register: pip_local_cache
   until: pip_local_cache | success
   retries: 3
@@ -80,22 +81,6 @@
     - pip-install-cache-distribute
     - pip-install
 
-- name: Install PIP
-  shell: "python /opt/get-pip.py --no-index --find-links={{ pip_tmp_packages | quote }} {{ pip_get_pip_options }} {{ pip_packages | map('quote') | join (' ') }}"
-  ignore_errors: true
-  register: pip_install
-  until: pip_install | success
-  retries: 3
-  delay: 2
-
-- name: Install PIP (fall back mode)
-  shell: "python /opt/get-pip.py --isolated --no-index --find-links={{ pip_tmp_packages | quote }} {{ pip_get_pip_options }} {{ pip_packages | map('quote') | join (' ') }}"
-  when: pip_install.rc != 0
-  register: pip_install_fall_back
-  until: pip_install_fall_back | success
-  retries: 3
-  delay: 2
-
 - name: Clean up local get-pip.py
   local_action:
     module: file
@@ -114,9 +99,8 @@
   tags:
     - pip-install-cleanup
 
-- name: Clean up remote install files
-  file:
-    path: "{{ pip_tmp_packages }}"
-    state: absent
-  tags:
-  - pip-install-cleanup
+- name: Set source install pip_get_pip_options
+  set_fact:
+    pip_source_install_options: "--no-index --find-links={{ pip_tmp_packages | quote }}"
+
+- include: install_source.yml
