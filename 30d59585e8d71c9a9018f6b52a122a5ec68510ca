@@ -1,0 +1,10 @@
+Code-Review+2: Steve Lewis (stevelle) <steve.lewis@rackspace.com>
+Code-Review+2: Jimmy McCrory <jimmy.mccrory@gmail.com>
+Workflow+1: Jimmy McCrory <jimmy.mccrory@gmail.com>
+Code-Review+1: Logan V <logan2211@gmail.com>
+Verified+2: Jenkins
+Submitted-by: Jenkins
+Submitted-at: Sat, 06 Aug 2016 00:08:54 +0000
+Reviewed-on: https://review.openstack.org/351482
+Project: openstack/openstack-ansible-pip_install
+Branch: refs/heads/master
