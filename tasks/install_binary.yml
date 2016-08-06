@@ -37,7 +37,7 @@
 
 - name: Install required pip packages
   pip:
-    name: "{{ pip_packages | map('quote') | join (' ') }} {{ pip_required_packages | map('quote') | join(' ') }}"
+    name: "{{ pip_packages | map('quote') | join (' ') }} {{ pip_required_pip_packages | map('quote') | join(' ') }}"
     state: latest
     extra_args: "--upgrade --force-reinstall"
   register: install_packages

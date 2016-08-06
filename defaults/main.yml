@@ -35,7 +35,7 @@ pip_source_install_options: ""
 # wheel and any other packages which must be installed when pip installs.
 pip_packages: []
 
-pip_required_packages:
+pip_required_pip_packages:
   - pyOpenSSL # SSL SNI support
   - pyasn1 # SSL SNI support
   - ndg-httpsclient # SSL SNI support
