@@ -13,6 +13,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Set the package install state for distribution packages
+# Options are 'present' and 'latest'
+pip_install_package_state: "latest"
+
 ## Path to pip download/installation script.
 pip_upstream_url: https://bootstrap.pypa.io/get-pip.py
 pip_fallback_url: https://raw.githubusercontent.com/pypa/get-pip/master/get-pip.py

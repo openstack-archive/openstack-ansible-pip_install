@@ -16,7 +16,7 @@
 - name: Install python-pip (yum)
   yum:
     pkg: "{{ python_pip_package }}"
-    state: "latest"
+    state: "{{ pip_install_package_state }}"
   register: install_packages
   until: install_packages|success
   retries: 5
@@ -27,7 +27,7 @@
 - name: Install python-pip (apt)
   apt:
     pkg: "{{ python_pip_package }}"
-    state: "latest"
+    state: "{{ pip_install_package_state }}"
   register: install_packages
   until: install_packages|success
   retries: 5
