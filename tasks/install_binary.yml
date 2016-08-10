@@ -35,6 +35,30 @@
   when:
     - ansible_pkg_mgr == 'apt'
 
+- name: Install yum packages
+  yum:
+    pkg: "{{ item }}"
+    state: "{{ pip_install_package_state }}"
+  register: install_packages
+  until: install_packages|success
+  retries: 5
+  delay: 2
+  with_items: "{{ python_packages }}"
+  when:
+    - ansible_pkg_mgr == 'yum'
+
+- name: Install apt packages
+  apt:
+    pkg: "{{ item }}"
+    state: "{{ pip_install_package_state }}"
+  register: install_packages
+  until: install_packages|success
+  retries: 5
+  delay: 2
+  with_items: "{{ python_packages }}"
+  when:
+    - ansible_pkg_mgr == 'apt'
+
 - name: Install pip packages and upgrade
   pip:
     name: "{{ pip_packages | map('quote') | join (' ') }}"

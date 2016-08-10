@@ -14,3 +14,6 @@
 # limitations under the License.
 
 python_pip_package: python-pip
+python_packages:
+  - libffi-dev
+  - libssl-dev
