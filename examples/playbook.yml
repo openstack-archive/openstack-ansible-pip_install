@@ -1,0 +1,6 @@
+- name: Install pip and lock it down
+  hosts: host_name
+  user: root
+  roles:
+    - role: "pip_install"
+      pip_lock_to_internal_repo: True
