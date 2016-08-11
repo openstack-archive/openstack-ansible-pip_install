@@ -27,9 +27,6 @@ pip_fallback_url: https://raw.githubusercontent.com/pypa/get-pip/master/get-pip.
 pip_offline_install: false
 pip_tmp_packages: /tmp/pip_install
 
-# Allow the deployer to enable binary installation of pip using a distro package
-pip_binary_install: true
-
 # Additional options that you might want to pass to "get-pip.py" when installing pip.
 # Default `pip_get_pip_options` is an empty string.
 pip_get_pip_options: ""
@@ -41,9 +38,8 @@ pip_packages:
   - pip
 
 pip_required_pip_packages:
-  - pyOpenSSL # SSL SNI support
-  - pyasn1 # SSL SNI support
   - ndg-httpsclient # SSL SNI support
+  - requests # SSL SNI support
 
 # Validate Certificates when downloading pip. May be set to "no" when proxy server
 # is intercepting the certificates.

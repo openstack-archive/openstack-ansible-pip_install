@@ -13,7 +13,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-python_pip_package: python-pip
 python_packages:
+  - build-essential
+  - python-setuptools
   - libffi-dev
   - libssl-dev
+  - python-openssl
+  - python-pyasn1
