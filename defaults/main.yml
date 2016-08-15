@@ -23,8 +23,26 @@ pip_get_pip_options: ""
 
 # This list var can be used to specify specific versions of pip, setuptools,
 # wheel and any other packages which must be installed when pip installs.
-pip_packages: []
+pip_packages:
+  - pip
 
 # Validate Certificates when downloading pip. May be set to "no" when proxy server
 # is intercepting the certificates.
 pip_validate_certs: "yes"
+
+## APT Cache options
+cache_timeout: 600
+
+## Distribution packages required in order to resolve SNI issues
+python_packages:
+  - build-essential
+  - python-setuptools
+  - libffi-dev
+  - libssl-dev
+  - python-openssl
+  - python-pyasn1
+
+## Python packages required in order to resolve SNI issues
+pip_required_pip_packages:
+  - ndg-httpsclient
+  - requests
