@@ -41,6 +41,9 @@ pip_required_pip_packages:
   - ndg-httpsclient # SSL SNI support
   - requests # SSL SNI support
 
+## APT Cache options
+cache_timeout: 600
+
 # Validate Certificates when downloading pip. May be set to "no" when proxy server
 # is intercepting the certificates.
 pip_validate_certs: "yes"
