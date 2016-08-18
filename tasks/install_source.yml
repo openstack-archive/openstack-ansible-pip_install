@@ -17,8 +17,7 @@
   shell: |
     python /opt/get-pip.py {{ pip_source_install_options }} \
                            {{ pip_get_pip_options }} \
-                           {{ pip_packages | map('quote') | join (' ') }} \
-                           {{ pip_required_pip_packages | map('quote') | join(' ') }}
+                           {{ pip_packages | map('quote') | join (' ') }}
   ignore_errors: true
   register: pip_install
   until: pip_install | success
@@ -29,12 +28,21 @@
   shell: |
     python /opt/get-pip.py --isolated {{ pip_source_install_options }} \
                                       {{ pip_get_pip_options }} \
-                                      {{ pip_packages | map('quote') | join (' ') }} \
-                                      {{ pip_required_pip_packages | map('quote') | join(' ') }}
+                                      {{ pip_packages | map('quote') | join (' ') }}
   when: pip_install.rc != 0
   register: pip_install_fall_back
   until: pip_install_fall_back | success
   retries: 3
+  delay: 2
+
+- name: Install pip packages
+  pip:
+    name: "{{ pip_required_pip_packages | map('quote') | join(' ') }}"
+    state: latest
+    extra_args: "{{ (pip_install_fall_back | changed) | ternary('--isolated', '') }}"
+  register: install_packages
+  until: install_packages|success
+  retries: 5
   delay: 2
 
 - name: Clean up remote install files

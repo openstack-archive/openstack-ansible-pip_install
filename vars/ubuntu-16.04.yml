@@ -19,5 +19,6 @@ python_packages:
   - python-setuptools
   - libffi-dev
   - libssl-dev
+  - python-dev
   - python-openssl
   - python-pyasn1
