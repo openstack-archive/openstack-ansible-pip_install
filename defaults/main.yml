@@ -66,3 +66,11 @@ pip_links: []
 
 ## Tunable overrides
 pip_global_conf_overrides: {}
+
+## Additional options to pass to pip
+# Example:
+#   pip_install_options: "--cert /etc/ssl/certs/ca-certificates.crt"
+#
+# See the documentationat https://pip.pypa.io/en/stable/reference/pip
+# for details.
+pip_install_options: ""

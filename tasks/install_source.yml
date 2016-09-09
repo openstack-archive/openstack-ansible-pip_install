@@ -39,7 +39,7 @@
   pip:
     name: "{{ pip_required_pip_packages | map('quote') | join(' ') }}"
     state: latest
-    extra_args: "{{ (pip_install_fall_back | changed) | ternary('--isolated', '') }}"
+    extra_args: "{{ (pip_install_fall_back | changed) | ternary('--isolated', '') }} {{ pip_install_options }}"
   register: install_packages
   until: install_packages|success
   retries: 5
