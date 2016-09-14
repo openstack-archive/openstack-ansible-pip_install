@@ -1,0 +1,8 @@
+Code-Review+2: Major Hayden <major@mhtx.net>
+Workflow+1: Kevin Carter (cloudnull) <kevin.carter@rackspace.com>
+Verified+2: Jenkins
+Submitted-by: Jenkins
+Submitted-at: Wed, 14 Sep 2016 15:49:48 +0000
+Reviewed-on: https://review.openstack.org/370170
+Project: openstack/openstack-ansible-pip_install
+Branch: refs/heads/master
