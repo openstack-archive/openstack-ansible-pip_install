@@ -1,0 +1,8 @@
+Code-Review+2: Travis Truman (automagically) <travis_truman@cable.comcast.com>
+Workflow+1: Kevin Carter (cloudnull) <kevin.carter@rackspace.com>
+Verified+2: Jenkins
+Submitted-by: Jenkins
+Submitted-at: Thu, 22 Sep 2016 20:08:21 +0000
+Reviewed-on: https://review.openstack.org/374882
+Project: openstack/openstack-ansible-pip_install
+Branch: refs/heads/master
