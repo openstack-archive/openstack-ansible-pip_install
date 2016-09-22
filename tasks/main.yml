@@ -29,8 +29,8 @@
     - pip-configuration
 
 - include: lockdown.yml
-  when:
-    - pip_lock_to_internal_repo | bool
+  static: no
+  when: pip_lock_to_internal_repo | bool
 
 - include: install.yml
   tags:

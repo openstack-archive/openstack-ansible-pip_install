@@ -16,9 +16,9 @@
 - include: pre_install.yml
 
 - include: install_online.yml
-  when:
-    - not pip_offline_install | bool
+  static: no
+  when: not pip_offline_install | bool
 
 - include: install_offline.yml
-  when:
-    - pip_offline_install | bool
+  static: no
+  when: pip_offline_install | bool
