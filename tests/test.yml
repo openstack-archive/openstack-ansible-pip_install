@@ -20,7 +20,7 @@
     pip_packages:
       - "pip==8.0.3"
   roles:
-    - role: "{{ rolename | basename }}"
+    - role: "pip_install"
   post_tasks:
     - name: Check .pip directory
       stat:
