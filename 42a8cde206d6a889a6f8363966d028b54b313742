@@ -1,0 +1,9 @@
+Code-Review+2: Major Hayden <major@mhtx.net>
+Code-Review+2: Travis Truman (automagically) <travis_truman@cable.comcast.com>
+Workflow+1: Travis Truman (automagically) <travis_truman@cable.comcast.com>
+Verified+2: Jenkins
+Submitted-by: Jenkins
+Submitted-at: Thu, 29 Sep 2016 19:54:35 +0000
+Reviewed-on: https://review.openstack.org/379666
+Project: openstack/openstack-ansible-pip_install
+Branch: refs/heads/stable/newton
