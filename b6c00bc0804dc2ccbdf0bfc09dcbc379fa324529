@@ -1,0 +1,9 @@
+Code-Review+2: Hugh Saunders <hugh@wherenow.org>
+Code-Review+2: Andy McCrae <andy.mccrae@googlemail.com>
+Workflow+1: Andy McCrae <andy.mccrae@googlemail.com>
+Verified+2: Jenkins
+Submitted-by: Jenkins
+Submitted-at: Fri, 30 Sep 2016 12:18:34 +0000
+Reviewed-on: https://review.openstack.org/380128
+Project: openstack/openstack-ansible-pip_install
+Branch: refs/heads/stable/newton
