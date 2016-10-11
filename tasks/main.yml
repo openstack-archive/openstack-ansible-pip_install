@@ -121,8 +121,20 @@
   pip:
     name: "{{ pip_required_pip_packages | map('quote') | join(' ') }}"
     state: latest
-    extra_args: "{{ (pip_install_fall_back | changed) | ternary('--isolated', '') }} {{ pip_install_options }}"
+    extra_args: "{{ pip_install_options }}"
+  ignore_errors: true
   register: install_packages
-  until: install_packages|success
+  until: install_packages | success
+  retries: 5
+  delay: 2
+
+- name: Install pip packages (fall back mode)
+  pip:
+    name: "{{ pip_required_pip_packages | map('quote') | join(' ') }}"
+    state: latest
+    extra_args: "--isolated {{ pip_install_options }}"
+  when: install_packages | failed
+  register: install_packages_fall_back
+  until: install_packages_fall_back | success
   retries: 5
   delay: 2
