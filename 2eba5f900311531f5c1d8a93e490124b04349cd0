@@ -1,0 +1,8 @@
+Code-Review+2: Major Hayden <major@mhtx.net>
+Workflow+1: Kevin Carter (cloudnull) <kevin@cloudnull.com>
+Verified+2: Jenkins
+Submitted-by: Jenkins
+Submitted-at: Wed, 12 Oct 2016 03:00:23 +0000
+Reviewed-on: https://review.openstack.org/384969
+Project: openstack/openstack-ansible-pip_install
+Branch: refs/heads/stable/mitaka
