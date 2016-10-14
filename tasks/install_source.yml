@@ -18,7 +18,7 @@
     python /opt/get-pip.py {{ pip_source_install_options }} \
                            {{ pip_get_pip_options }} \
                            {{ pip_packages | map('quote') | join (' ') }}
-  ignore_errors: true
+  failed_when: false
   register: pip_install
   until: pip_install | success
   retries: 3
@@ -40,7 +40,7 @@
     name: "{{ pip_required_pip_packages | map('quote') | join(' ') }}"
     state: latest
     extra_args: "{{ pip_install_options }}"
-  ignore_errors: true
+  failed_when: false
   register: install_packages
   until: install_packages | success
   retries: 5

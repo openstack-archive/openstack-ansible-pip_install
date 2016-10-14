@@ -21,7 +21,7 @@
     validate_certs: "{{ pip_validate_certs }}"
   register: get_pip
   until: get_pip | success
-  ignore_errors: True
+  failed_when: false
   retries: 5
   delay: 2
   tags:
