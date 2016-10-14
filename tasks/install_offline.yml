@@ -22,7 +22,7 @@
     validate_certs: "{{ pip_validate_certs }}"
   register: get_pip_local
   until: get_pip_local | success
-  ignore_errors: True
+  failed_when: false
   retries: 5
   delay: 2
   run_once: yes
