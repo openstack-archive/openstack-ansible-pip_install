@@ -1,0 +1,9 @@
+Code-Review+2: Kevin Carter (cloudnull) <kevin@cloudnull.com>
+Code-Review+2: Travis Truman (automagically) <travis_truman@cable.comcast.com>
+Workflow+1: Travis Truman (automagically) <travis_truman@cable.comcast.com>
+Verified+2: Jenkins
+Submitted-by: Jenkins
+Submitted-at: Mon, 17 Oct 2016 16:29:37 +0000
+Reviewed-on: https://review.openstack.org/387497
+Project: openstack/openstack-ansible-pip_install
+Branch: refs/heads/stable/newton
