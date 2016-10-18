@@ -39,19 +39,23 @@
   pip:
     name: "{{ pip_required_pip_packages | map('quote') | join(' ') }}"
     state: latest
-    extra_args: "{{ pip_install_options }}"
+    extra_args: >-
+      {{ (pip_install_upper_constraints is defined) | ternary('--constraint ' + pip_install_upper_constraints | default(''),'') }}
+      {{ pip_install_options }}
   failed_when: false
   register: install_packages
   until: install_packages | success
   retries: 5
   delay: 2
 
-
 - name: Install pip packages (fall back mode)
   pip:
     name: "{{ pip_required_pip_packages | map('quote') | join(' ') }}"
     state: latest
-    extra_args: "--isolated {{ pip_install_options }}"
+    extra_args: >-
+      --isolated
+      {{ (pip_install_upper_constraints is defined) | ternary('--constraint ' + pip_install_upper_constraints | default(''),'') }}
+      {{ pip_install_options }}
   when: install_packages | failed
   register: install_packages_fall_back
   until: install_packages_fall_back | success
