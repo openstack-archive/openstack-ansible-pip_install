@@ -1,0 +1,8 @@
+Code-Review+2: Andy McCrae <andy.mccrae@googlemail.com>
+Workflow+1: Andy McCrae <andy.mccrae@googlemail.com>
+Verified+2: Jenkins
+Submitted-by: Jenkins
+Submitted-at: Tue, 18 Oct 2016 16:10:40 +0000
+Reviewed-on: https://review.openstack.org/388072
+Project: openstack/openstack-ansible-pip_install
+Branch: refs/heads/master
