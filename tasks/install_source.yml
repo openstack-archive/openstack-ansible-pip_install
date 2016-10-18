@@ -35,23 +35,32 @@
   retries: 3
   delay: 2
 
+- name: Set pip_install_options_fact (with upper constraints)
+  set_fact:
+    pip_install_options_fact: "--constraint {{ pip_install_upper_constraints }} {{ pip_install_options }}"
+  when: pip_install_upper_constraints is defined
+
+- name: Set pip_install_options_fact (without upper constraints)
+  set_fact:
+    pip_install_options_fact: "{{ pip_install_options }}"
+  when: pip_install_upper_constraints is not defined
+
 - name: Install pip packages
   pip:
     name: "{{ pip_required_pip_packages | map('quote') | join(' ') }}"
     state: latest
-    extra_args: "{{ pip_install_options }}"
+    extra_args: "{{ pip_install_options_fact }}"
   failed_when: false
   register: install_packages
   until: install_packages | success
   retries: 5
   delay: 2
 
-
 - name: Install pip packages (fall back mode)
   pip:
     name: "{{ pip_required_pip_packages | map('quote') | join(' ') }}"
     state: latest
-    extra_args: "--isolated {{ pip_install_options }}"
+    extra_args: "--isolated {{ pip_install_options_fact }}"
   when: install_packages | failed
   register: install_packages_fall_back
   until: install_packages_fall_back | success
