@@ -19,6 +19,7 @@
   vars:
     pip_packages:
       - "pip==8.0.3"
+    pip_install_upper_constraints: "http://git.openstack.org/cgit/openstack/requirements/plain/upper-constraints.txt?h=stable/mitaka"
   roles:
     - role: "{{ rolename | basename }}"
   post_tasks:

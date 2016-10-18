@@ -52,6 +52,10 @@ pip_required_pip_packages:
 # Example:
 #   pip_install_options: "--cert /etc/ssl/certs/ca-certificates.crt"
 #
-# See the documentationat https://pip.pypa.io/en/stable/reference/pip
+# See the documentation at https://pip.pypa.io/en/stable/reference/pip
 # for details.
 pip_install_options: ""
+
+# The URL/path of a constraints file to use when installing the additional pip packages.
+#pip_install_upper_constraints: "http://git.openstack.org/cgit/openstack/requirements/plain/upper-constraints.txt?h=stable/mitaka"
+
