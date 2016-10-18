@@ -32,6 +32,9 @@ pip_tmp_packages: /tmp/pip_install
 pip_get_pip_options: ""
 pip_source_install_options: ""
 
+# The URL/path of a constraints file to use when installing the additional pip packages.
+#pip_install_upper_constraints: "http://git.openstack.org/cgit/openstack/requirements/plain/upper-constraints.txt?h=stable/newton"
+
 # This list var can be used to specify specific versions of pip, setuptools,
 # wheel and any other packages which must be installed when pip installs.
 pip_packages:
