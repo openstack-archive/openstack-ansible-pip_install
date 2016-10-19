@@ -39,8 +39,8 @@
   pip:
     name: "{{ pip_required_pip_packages | map('quote') | join(' ') }}"
     state: latest
-    extra_args: >
-      {{ (pip_install_upper_constraints is defined) | ternary('--constraint ' + pip_install_upper_constraints | default(),'') }}
+    extra_args: >-
+      {{ (pip_install_upper_constraints is defined) | ternary('--constraint ' + pip_install_upper_constraints | default(''),'') }}
       {{ pip_install_options }}
   failed_when: false
   register: install_packages
@@ -52,9 +52,9 @@
   pip:
     name: "{{ pip_required_pip_packages | map('quote') | join(' ') }}"
     state: latest
-    extra_args: >
+    extra_args: >-
       --isolated
-      {{ (pip_install_upper_constraints is defined) | ternary('--constraint ' + pip_install_upper_constraints | default(),'') }}
+      {{ (pip_install_upper_constraints is defined) | ternary('--constraint ' + pip_install_upper_constraints | default(''),'') }}
       {{ pip_install_options }}
   when: install_packages | failed
   register: install_packages_fall_back
