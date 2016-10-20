@@ -26,6 +26,8 @@
   retries: 5
   delay: 2
   run_once: yes
+  notify:
+    - Clean up local get-pip.py
   tags:
     - pip-install-local
     - pip-install-script
@@ -43,6 +45,8 @@
   retries: 5
   delay: 2
   run_once: yes
+  notify:
+    - Clean up local get-pip.py
   tags:
     - pip-install-local
     - pip-install-script
@@ -54,6 +58,8 @@
     path: "{{ pip_tmp_packages }}"
     state: directory
   run_once: yes
+  notify:
+    - Clean up local install cache
   tags:
     - pip-install-local
 
@@ -64,6 +70,8 @@
   until: pip_local_cache | success
   retries: 3
   delay: 2
+  notify:
+    - Clean up local install cache
 
 - name: Distribute the modern PIP installer
   copy:
@@ -77,27 +85,11 @@
   copy:
     src: "{{ pip_tmp_packages }}/"
     dest: "{{ pip_tmp_packages }}"
+  notify:
+    - Clean up remote install files
   tags:
     - pip-install-cache-distribute
     - pip-install
-
-- name: Clean up local get-pip.py
-  local_action:
-    module: file
-    path: "/tmp/get-pip.py"
-    state: absent
-  run_once: yes
-  tags:
-    - pip-install-cleanup
-
-- name: Clean up local install cache
-  local_action:
-    module: file
-    path: "{{ pip_tmp_packages }}"
-    state: absent
-  run_once: yes
-  tags:
-    - pip-install-cleanup
 
 - name: Set source install pip_get_pip_options
   set_fact:
