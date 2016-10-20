@@ -61,10 +61,3 @@
   until: install_packages_fall_back | success
   retries: 5
   delay: 2
-
-- name: Clean up remote install files
-  file:
-    path: "{{ pip_tmp_packages }}"
-    state: absent
-  tags:
-  - pip-install-cleanup
