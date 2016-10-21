@@ -1,0 +1,9 @@
+Code-Review+2: Major Hayden <major@mhtx.net>
+Code-Review+2: Jimmy McCrory <jimmy.mccrory@gmail.com>
+Workflow+1: Jimmy McCrory <jimmy.mccrory@gmail.com>
+Verified+2: Jenkins
+Submitted-by: Jenkins
+Submitted-at: Fri, 21 Oct 2016 17:13:54 +0000
+Reviewed-on: https://review.openstack.org/389152
+Project: openstack/openstack-ansible-pip_install
+Branch: refs/heads/stable/newton
