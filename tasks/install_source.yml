@@ -14,20 +14,21 @@
 # limitations under the License.
 
 - name: Install PIP
-  shell: |
-    python /opt/get-pip.py {{ pip_source_install_options }} \
-                           {{ pip_get_pip_options }} \
+  command: >
+    python /opt/get-pip.py {{ pip_source_install_options }}
+                           {{ pip_get_pip_options }}
                            {{ pip_packages | map('quote') | join (' ') }}
   failed_when: false
+  changed_when: false
   register: pip_install
   until: pip_install | success
   retries: 3
   delay: 2
 
 - name: Install PIP (fall back mode)
-  shell: |
-    python /opt/get-pip.py --isolated {{ pip_source_install_options }} \
-                                      {{ pip_get_pip_options }} \
+  command: >
+    python /opt/get-pip.py --isolated {{ pip_source_install_options }}
+                                      {{ pip_get_pip_options }}
                                       {{ pip_packages | map('quote') | join (' ') }}
   when: pip_install.rc != 0
   register: pip_install_fall_back
@@ -38,7 +39,7 @@
 - name: Install pip packages
   pip:
     name: "{{ pip_required_pip_packages | map('quote') | join(' ') }}"
-    state: latest
+    state: "{{ pip_install_package_state }}"
     extra_args: >-
       {{ (pip_install_upper_constraints is defined) | ternary('--constraint ' + pip_install_upper_constraints | default(''),'') }}
       {{ pip_install_options }}
@@ -51,7 +52,7 @@
 - name: Install pip packages (fall back mode)
   pip:
     name: "{{ pip_required_pip_packages | map('quote') | join(' ') }}"
-    state: latest
+    state: "{{ pip_install_package_state }}"
     extra_args: >-
       --isolated
       {{ (pip_install_upper_constraints is defined) | ternary('--constraint ' + pip_install_upper_constraints | default(''),'') }}
