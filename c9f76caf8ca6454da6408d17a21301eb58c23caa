@@ -1,0 +1,10 @@
+Code-Review+2: Major Hayden <major@mhtx.net>
+Code-Review+1: weezer su <weezer.su@rackspace.com>
+Code-Review+2: Andy McCrae <andy.mccrae@googlemail.com>
+Workflow+1: Andy McCrae <andy.mccrae@googlemail.com>
+Verified+2: Jenkins
+Submitted-by: Jenkins
+Submitted-at: Fri, 02 Dec 2016 16:32:10 +0000
+Reviewed-on: https://review.openstack.org/405867
+Project: openstack/openstack-ansible-pip_install
+Branch: refs/heads/master
