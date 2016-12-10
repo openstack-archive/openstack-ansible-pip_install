@@ -21,3 +21,7 @@ pip_install_distro_packages:
   - python-dev
   - python-openssl
   - python-pyasn1
+
+pip_required_pip_packages:
+  - ndg-httpsclient # SSL SNI support
+  - requests # SSL SNI support
