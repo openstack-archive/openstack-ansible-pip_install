@@ -35,7 +35,12 @@ pip_source_install_options: ""
 # The URL/path of a constraints file to use when installing the additional pip packages.
 #pip_install_upper_constraints: "http://git.openstack.org/cgit/openstack/requirements/plain/upper-constraints.txt"
 
-pip_install_distro_packages: []
+pip_install_distro_packages: "{{ pip_install_build_packages | ternary(pip_install_distro_build_packages, []) }}"
+pip_install_distro_build_packages: []
+
+# Some pip installations require the system to have a compiler present
+# Toggling this will install a compiler and python-dev libraries to the host
+pip_install_build_packages: yes
 
 # This list var can be used to specify specific versions of pip, setuptools,
 # wheel and any other packages which must be installed when pip installs.

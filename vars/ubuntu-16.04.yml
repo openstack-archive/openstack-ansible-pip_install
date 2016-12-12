@@ -12,3 +12,14 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+
+pip_install_distro_build_packages:
+  - build-essential
+  - python-dev
+  - python-setuptools
+  - libffi-dev
+  - libssl-dev
+  - python-dev
+  - python3-dev
+  - python-openssl
+  - python-pyasn1
