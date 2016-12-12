@@ -1,0 +1,9 @@
+Code-Review+2: Andy McCrae <andy.mccrae@googlemail.com>
+Code-Review+2: Major Hayden <major@mhtx.net>
+Workflow+1: Major Hayden <major@mhtx.net>
+Verified+2: Jenkins
+Submitted-by: Jenkins
+Submitted-at: Mon, 12 Dec 2016 18:52:39 +0000
+Reviewed-on: https://review.openstack.org/409872
+Project: openstack/openstack-ansible-pip_install
+Branch: refs/heads/master
