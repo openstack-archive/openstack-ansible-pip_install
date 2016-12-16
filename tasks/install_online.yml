@@ -17,7 +17,7 @@
   get_url:
     url: "{{ pip_upstream_url }}"
     dest: "/opt/get-pip.py"
-    force: "yes"
+    force: "{{ pip_get_pip_force | bool }}"
     validate_certs: "{{ pip_validate_certs }}"
   register: get_pip
   until: get_pip | success
@@ -31,7 +31,7 @@
   get_url:
     url: "{{ pip_fallback_url }}"
     dest: "/opt/get-pip.py"
-    force: "yes"
+    force: "{{ pip_get_pip_force | bool }}"
     validate_certs: "{{ pip_validate_certs }}"
   when: get_pip | failed
   register: get_pip_fallback

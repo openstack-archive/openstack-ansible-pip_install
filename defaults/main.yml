@@ -82,3 +82,6 @@ pip_global_conf_overrides: {}
 # See the documentationat https://pip.pypa.io/en/stable/reference/pip
 # for details.
 pip_install_options: ""
+
+# Always force getting the latest get-pip script
+pip_get_pip_force: yes
