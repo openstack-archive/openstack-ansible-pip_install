@@ -10,6 +10,9 @@ keep track of versions.
 It can also configure pip links that will restrict the package sources to
 the OpenStack-Ansible repository.
 
+To clone or view the source code for this repository, visit the role repository
+for `pip_install <https://github.com/openstack/openstack-ansible-pip_install>`_.
+
 Default variables
 ~~~~~~~~~~~~~~~~~
 
