@@ -1,0 +1,8 @@
+Code-Review+2: Alexandra Settle <a.settle@outlook.com>
+Workflow+1: Alexandra Settle <a.settle@outlook.com>
+Verified+2: Jenkins
+Submitted-by: Jenkins
+Submitted-at: Thu, 22 Dec 2016 14:49:51 +0000
+Reviewed-on: https://review.openstack.org/414151
+Project: openstack/openstack-ansible-pip_install
+Branch: refs/heads/master
