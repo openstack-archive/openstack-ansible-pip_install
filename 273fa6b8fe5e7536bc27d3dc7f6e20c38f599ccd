@@ -1,0 +1,8 @@
+Code-Review+2: Jesse Pretorius (odyssey4me) <jesse.pretorius@rackspace.co.uk>
+Workflow+1: Jesse Pretorius (odyssey4me) <jesse.pretorius@rackspace.co.uk>
+Verified+2: Jenkins
+Submitted-by: Jenkins
+Submitted-at: Mon, 06 Feb 2017 09:34:11 +0000
+Reviewed-on: https://review.openstack.org/428866
+Project: openstack/openstack-ansible-pip_install
+Branch: refs/heads/stable/ocata
