@@ -13,6 +13,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Ubuntu Cloud Archive variables
+uca_openstack_release: newton
+uca_repo_dist: "{{ ansible_lsb.codename }}-updates/{{ uca_openstack_release }}"
+uca_repo: "deb {{ uca_apt_repo_url }} {{ uca_repo_dist }} main"
+pip_install_external_repo_key_package: "ubuntu-cloud-keyring"
+
 pip_install_distro_packages:
   - build-essential
   - python-dev

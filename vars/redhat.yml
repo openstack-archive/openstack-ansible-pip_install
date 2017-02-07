@@ -13,6 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+pip_install_external_repo_key_package: "centos-release-openstack-newton"
 pip_install_distro_packages:
   - gcc
   - libffi-devel
