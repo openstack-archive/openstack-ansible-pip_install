@@ -13,6 +13,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+uca_enable: True
+uca_apt_repo_url: "http://ubuntu-cloud.archive.canonical.com/ubuntu"
+
 # Set the package install state for distribution packages
 # Options are 'present' and 'latest'
 pip_install_package_state: "latest"
