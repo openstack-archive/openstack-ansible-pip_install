@@ -13,28 +13,42 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-- name: Install yum packages
-  yum:
-    pkg: "{{ item }}"
-    state: "{{ pip_install_package_state }}"
-  register: install_packages
-  until: install_packages|success
-  retries: 5
-  delay: 2
-  with_items: "{{ pip_install_distro_packages }}"
-  when:
-    - ansible_pkg_mgr == 'yum'
-
-- name: Install apt packages
+- name: Ensure apt cache is up to date
   apt:
-    pkg: "{{ item }}"
-    state: "{{ pip_install_package_state }}"
     update_cache: yes
     cache_valid_time: "{{ cache_timeout }}"
+  when:
+    - ansible_pkg_mgr == 'apt'
+
+- name: Install external repo key package
+  package:
+    name: "{{ pip_install_external_repo_key_package }}"
+    state: "{{ pip_install_package_state }}"
+  tags:
+    - add-repo-keys
+
+- name: Install repo for distro binaries
+  apt_repository:
+    repo: "{{ uca_repo }}"
+    state: present
+    update_cache: yes
+    filename: "{{ uca_apt_source_list_filename | default(omit) }}"
+  register: uca_add_repo
+  until: uca_add_repo|success
+  retries: 5
+  delay: 2
+  when:
+    - ansible_pkg_mgr == 'apt'
+    - uca_enable
+  tags:
+    - add-uca-repo
+
+- name: Install packages
+  package:
+    name: "{{ item }}"
+    state: "{{ pip_install_package_state }}"
   register: install_packages
   until: install_packages|success
   retries: 5
   delay: 2
   with_items: "{{ pip_install_distro_packages }}"
-  when:
-    - ansible_pkg_mgr == 'apt'

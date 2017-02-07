@@ -13,6 +13,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+#TODO(evrardjp): bump to ocata when published.
+pip_install_external_repo_key_package: "centos-release-openstack-newton"
+
 pip_install_distro_build_packages:
   - gcc
   - libffi-devel
