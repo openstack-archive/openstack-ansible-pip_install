@@ -13,6 +13,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+- name: Remove unneeded files from previous releases
+  file:
+    path: "{{ item }}"
+    state: "absent"
+  with_items:
+    - "{{ ansible_env.HOME }}/.pip/base"
+    - "{{ ansible_env.HOME }}/.pip/links.d"
+    - "{{ ansible_env.HOME }}/.pip/pip-link-build.py"
+  tags:
+    - pip-directories
+    - pip-files
+
 - name: Create pip config directory
   file:
     path: "{{ item }}"
@@ -23,7 +35,6 @@
     - "{{ ansible_env.HOME }}/.cache"
     - "{{ ansible_env.HOME }}/.cache/pip"
     - "{{ ansible_env.HOME }}/.pip"
-    - "{{ ansible_env.HOME }}/.pip/base"
   tags:
     - pip-directories
 
@@ -37,10 +48,10 @@
   tags:
     - pip-files
 
-- name: Drop pip global config(s)
+- name: Drop pip config
   config_template:
-    src: "global.conf.j2"
-    dest: "{{ ansible_env.HOME }}/.pip/base/global.conf"
+    src: "pip.conf.j2"
+    dest: "{{ ansible_env.HOME }}/.pip/pip.conf"
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_group_id|default(ansible_user_id) }}"
     mode: "0644"
