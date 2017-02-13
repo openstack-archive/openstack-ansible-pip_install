@@ -83,13 +83,14 @@
     state: "{{ user_external_repo.state | default('present') }}"
     update_cache: yes
     filename: "{{ user_external_repo.filename | default(omit) }}"
-  register: user_external_repo
-  until: user_external_repo|success
+  register: use_external_repo_apt
+  until: use_external_repo_apt|success
   retries: 5
   delay: 2
   when:
     - ansible_pkg_mgr == 'apt'
     - user_external_repo is defined
+    - user_external_repo.repo is defined
   tags:
     - add-external-repo
 
@@ -101,8 +102,8 @@
     gpgkey: "{{ user_external_repo.gpgkey | default(omit) }}"
     gpgcheck: "{{ user_external_repo.gpgcheck | default(omit) }}"
     enabled: "{{ user_external_repo.enabled | default('yes') }}"
-  register: user_external_repo
-  until: user_external_repo|success
+  register: use_external_repo_yum
+  until: use_external_repo_yum|success
   retries: 5
   delay: 2
   when:
