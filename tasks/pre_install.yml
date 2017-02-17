@@ -22,11 +22,14 @@
 
 # Under CentOS, this will add the repo and its key to the keyring
 # Under Ubuntu, this will only add the key
+# Under SUSE, it will do nothing
 - name: Install external repo key with package
   package:
     name: "{{ pip_install_external_repo_key_package }}"
     state: "{{ pip_install_package_state }}"
-  when: user_external_repo_key is not defined
+  when:
+    - user_external_repo_key is not defined
+    - ansible_pkg_mgr != 'zypper'
   tags:
     - add-repo-keys
 
