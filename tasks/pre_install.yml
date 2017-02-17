@@ -20,6 +20,16 @@
   when:
     - ansible_pkg_mgr == 'apt'
 
+- name: Remove known problem packages
+  package:
+    name: "{{ item }}"
+    state: absent
+  register: remove_packages
+  until: remove_packages|success
+  retries: 5
+  delay: 2
+  with_items: "{{ pip_install_remove_distro_packages }}"
+
 # Under CentOS, this will add the repo and its key to the keyring
 # Under Ubuntu, this will only add the key
 - name: Install external repo key with package
