@@ -13,8 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-#TODO(evrardjp): bump to ocata when published.
-pip_install_external_repo_key_package: "centos-release-openstack-newton"
+pip_install_external_repo_key_package: "https://rdoproject.org/repos/openstack-ocata/rdo-release-ocata.rpm"
 
 pip_install_distro_build_packages:
   - gcc
@@ -27,3 +26,7 @@ pip_install_distro_build_packages:
 pip_required_pip_packages:
   - ndg-httpsclient # SSL SNI support
   - requests # SSL SNI support
+
+pip_install_remove_distro_packages:
+  - centos-openstack-release-*
+  - centos-release-qemu-ev
