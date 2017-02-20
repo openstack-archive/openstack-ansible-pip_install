@@ -1,5 +1,4 @@
 ---
 features:
-  - The pip_install role now support SUSE based distributions.
-    Required packages can now be installed using the `zypper`
-    package manager.
+  - The role now supports SUSE based distributions. Required packages
+    can now be installed using the `zypper` package manager.
