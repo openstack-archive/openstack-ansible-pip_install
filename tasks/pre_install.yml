@@ -35,7 +35,7 @@
 - name: Install external repo key with package
   package:
     name: "{{ pip_install_external_repo_key_package }}"
-    state: "{{ pip_install_package_state }}"
+    state: "{{ pip_install_external_repo_key_package_state | default('present') }}"
   when: user_external_repo_key is not defined
   tags:
     - add-repo-keys
