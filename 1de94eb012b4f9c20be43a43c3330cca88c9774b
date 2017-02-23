@@ -1,0 +1,10 @@
+Code-Review+2: Jesse Pretorius (odyssey4me) <jesse.pretorius@rackspace.co.uk>
+Code-Review+2: Andy McCrae <andy.mccrae@googlemail.com>
+Workflow+1: Andy McCrae <andy.mccrae@googlemail.com>
+Workflow+1: Jean-Philippe Evrard <jean-philippe.evrard@rackspace.co.uk>
+Verified+2: Jenkins
+Submitted-by: Jenkins
+Submitted-at: Thu, 23 Feb 2017 19:44:36 +0000
+Reviewed-on: https://review.openstack.org/435515
+Project: openstack/openstack-ansible-pip_install
+Branch: refs/heads/master
