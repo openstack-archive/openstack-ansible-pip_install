@@ -61,68 +61,70 @@
 
 - name: Install external repo key manually (apt)
   apt_key:
-    id: "{{ user_external_repo_key.id | default(omit) }}"
-    keyserver: "{{ user_external_repo_key.keyserver | default(omit) }}"
-    url: "{{ user_external_repo_key.url | default(omit) }}"
-    state: present
-  when:
-    - ansible_pkg_mgr == 'apt'
-    - user_external_repo_key is defined
+    id: "{{ item.id | default(omit) }}"
+    keyserver: "{{ item.keyserver | default(omit) }}"
+    url: "{{ item.url | default(omit) }}"
+    state: "{{ item.state | default('present') }}"
   register: add_keys
   until: add_keys|success
   retries: 5
   delay: 2
+  with_items: "{{ user_external_repo_keys_list }}"
+  when:
+    - ansible_pkg_mgr == 'apt'
+    - user_external_repo_keys_list is defined
   tags:
     - add-repo-keys
 
 - name: Install external repo key manually (rpm)
   rpm_key:
-    key: "{{ user_external_repo_key.key }}"
-    validate_certs: "{{ user_external_repo_key.validate_certs | default(omit) }}"
-    state: present
-  when:
-    - ansible_pkg_mgr == 'yum'
-    - user_external_repo_key is defined
+    key: "{{ item.key }}"
+    validate_certs: "{{ item.validate_certs | default(omit) }}"
+    state: "{{ item.state | default('present') }}"
   register: add_keys
   until: add_keys|success
   retries: 5
   delay: 2
+  with_items: "{{ user_external_repo_keys_list }}"
+  when:
+    - ansible_pkg_mgr == 'yum'
+    - user_external_repo_keys_list is defined
   tags:
     - add-repo-keys
 
 - name: Install external repo manually (apt)
   apt_repository:
-    repo: "{{ user_external_repo.repo }}"
-    state: "{{ user_external_repo.state | default('present') }}"
+    repo: "{{ item.repo }}"
+    state: "{{ item.state | default('present') }}"
     update_cache: yes
-    filename: "{{ user_external_repo.filename | default(omit) }}"
+    filename: "{{ item.filename | default(omit) }}"
   register: use_external_repo_apt
   until: use_external_repo_apt|success
   retries: 5
   delay: 2
+  with_items: "{{ user_external_repos_list }}"
   when:
     - ansible_pkg_mgr == 'apt'
-    - user_external_repo is defined
-    - user_external_repo.repo is defined
+    - user_external_repos_list is defined
   tags:
     - add-external-repo
 
 - name: Install external repo manually (yum)
   yum_repository:
-    name: "{{ user_external_repo.name }}"
-    description: "{{ user_external_repo.description | default(omit) }}"
-    baseurl: "{{ user_external_repo.baseurl | default(omit) }}"
-    gpgkey: "{{ user_external_repo.gpgkey | default(omit) }}"
-    gpgcheck: "{{ user_external_repo.gpgcheck | default(omit) }}"
-    enabled: "{{ user_external_repo.enabled | default('yes') }}"
+    name: "{{ item.name }}"
+    description: "{{ item.description | default(omit) }}"
+    baseurl: "{{ item.baseurl | default(omit) }}"
+    gpgkey: "{{ item.gpgkey | default(omit) }}"
+    gpgcheck: "{{ item.gpgcheck | default(omit) }}"
+    enabled: "{{ item.enabled | default('yes') }}"
   register: use_external_repo_yum
   until: use_external_repo_yum|success
   retries: 5
   delay: 2
+  with_items: "{{ user_external_repos_list }}"
   when:
     - ansible_pkg_mgr == 'yum'
-    - user_external_repo is defined
-    - user_external_repo.name is defined
+    - user_external_repos_list is defined
   tags:
     - add-external-repo
 
