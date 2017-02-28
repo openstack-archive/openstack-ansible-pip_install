@@ -82,6 +82,7 @@ pip_packages:
 pip_required_pip_packages:
   - ndg-httpsclient # SSL SNI support
   - requests # SSL SNI support
+  - urllib3 # SSL SNI support
 
 ## APT Cache options
 cache_timeout: 600
