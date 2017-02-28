@@ -13,13 +13,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-- name: Ensure apt cache is up to date
-  apt:
-    update_cache: yes
-    cache_valid_time: "{{ cache_timeout }}"
-  when:
-    - ansible_pkg_mgr == 'apt'
-
 - name: Remove known problem packages
   package:
     name: "{{ item }}"
@@ -30,100 +23,7 @@
   delay: 2
   with_items: "{{ pip_install_remove_distro_packages }}"
 
-# Under CentOS, this will add the repo and its key to the keyring
-# Under Ubuntu, this will only add the key
-- name: Install external repo key with package
-  package:
-    name: "{{ pip_install_external_repo_key_package }}"
-    state: "{{ pip_install_external_repo_key_package_state | default('present') }}"
-  when: user_external_repo_key is not defined
-  tags:
-    - add-repo-keys
-
-- name: Install repo for distro binaries
-  apt_repository:
-    repo: "{{ uca_repo }}"
-    state: present
-    update_cache: yes
-    filename: "{{ uca_apt_source_list_filename | default(omit) }}"
-  register: uca_add_repo
-  until: uca_add_repo|success
-  retries: 5
-  delay: 2
-  when:
-    - ansible_pkg_mgr == 'apt'
-    - uca_enable
-  tags:
-    - add-uca-repo
-
-- name: Install external repo key manually (apt)
-  apt_key:
-    id: "{{ item.id | default(omit) }}"
-    keyserver: "{{ item.keyserver | default(omit) }}"
-    url: "{{ item.url | default(omit) }}"
-    state: "{{ item.state | default('present') }}"
-  register: add_keys
-  until: add_keys|success
-  retries: 5
-  delay: 2
-  with_items: "{{ user_external_repo_keys_list }}"
-  when:
-    - ansible_pkg_mgr == 'apt'
-    - user_external_repo_keys_list is defined
-  tags:
-    - add-repo-keys
-
-- name: Install external repo key manually (rpm)
-  rpm_key:
-    key: "{{ item.key }}"
-    validate_certs: "{{ item.validate_certs | default(omit) }}"
-    state: "{{ item.state | default('present') }}"
-  register: add_keys
-  until: add_keys|success
-  retries: 5
-  delay: 2
-  with_items: "{{ user_external_repo_keys_list }}"
-  when:
-    - ansible_pkg_mgr == 'yum'
-    - user_external_repo_keys_list is defined
-  tags:
-    - add-repo-keys
-
-- name: Install external repo manually (apt)
-  apt_repository:
-    repo: "{{ item.repo }}"
-    state: "{{ item.state | default('present') }}"
-    update_cache: yes
-    filename: "{{ item.filename | default(omit) }}"
-  register: use_external_repo_apt
-  until: use_external_repo_apt|success
-  retries: 5
-  delay: 2
-  with_items: "{{ user_external_repos_list }}"
-  when:
-    - ansible_pkg_mgr == 'apt'
-    - user_external_repos_list is defined
-  tags:
-    - add-external-repo
-
-- name: Install external repo manually (yum)
-  yum_repository:
-    name: "{{ item.name }}"
-    description: "{{ item.description | default(omit) }}"
-    baseurl: "{{ item.baseurl | default(omit) }}"
-    gpgkey: "{{ item.gpgkey | default(omit) }}"
-    gpgcheck: "{{ item.gpgcheck | default(omit) }}"
-    enabled: "{{ item.enabled | default('yes') }}"
-  register: use_external_repo_yum
-  until: use_external_repo_yum|success
-  retries: 5
-  delay: 2
-  with_items: "{{ user_external_repos_list }}"
-  when:
-    - ansible_pkg_mgr == 'yum'
-    - user_external_repos_list is defined
-  tags:
-    - add-external-repo
+- include: "pre_install_{{ ansible_pkg_mgr }}.yml"
 
 - name: Install packages
   package:
