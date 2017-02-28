@@ -24,3 +24,4 @@ pip_install_distro_build_packages:
 pip_required_pip_packages:
   - ndg-httpsclient # SSL SNI support
   - requests # SSL SNI support
+  - urllib3 # SSL SNI support
