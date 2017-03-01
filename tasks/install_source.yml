@@ -13,52 +13,52 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-- name: Install PIP
-  command: >
-    python /opt/get-pip.py {{ pip_source_install_options }}
-                           {{ pip_get_pip_options }}
-                           {{ pip_packages | map('quote') | join (' ') }}
-  failed_when: false
-  changed_when: false
-  register: pip_install
-  until: pip_install | success
-  retries: 3
-  delay: 2
+- block:
+    - name: Install PIP
+      command: >
+        python /opt/get-pip.py {{ pip_source_install_options }}
+                               {{ pip_get_pip_options }}
+                               {{ pip_packages | map('quote') | join (' ') }}
+      changed_when: false
+      register: pip_install
+      until: pip_install | success
+      retries: 3
+      delay: 2
 
-- name: Install PIP (fall back mode)
-  command: >
-    python /opt/get-pip.py --isolated {{ pip_source_install_options }}
-                                      {{ pip_get_pip_options }}
-                                      {{ pip_packages | map('quote') | join (' ') }}
-  when: pip_install.rc != 0
-  register: pip_install_fall_back
-  until: pip_install_fall_back | success
-  retries: 3
-  delay: 2
+  rescue:
+    - name: Install PIP (fall back mode)
+      command: >
+        python /opt/get-pip.py --isolated {{ pip_source_install_options }}
+                                          {{ pip_get_pip_options }}
+                                          {{ pip_packages | map('quote') | join (' ') }}
+      register: pip_install_fall_back
+      until: pip_install_fall_back | success
+      retries: 3
+      delay: 2
 
-- name: Install pip packages
-  pip:
-    name: "{{ pip_required_pip_packages | map('quote') | join(' ') }}"
-    state: "{{ pip_install_package_state }}"
-    extra_args: >-
-      {{ (pip_install_upper_constraints is defined) | ternary('--constraint ' + pip_install_upper_constraints | default(''),'') }}
-      {{ pip_install_options }}
-  failed_when: false
-  register: install_packages
-  until: install_packages | success
-  retries: 5
-  delay: 2
+- block:
+    - name: Install pip packages
+      pip:
+        name: "{{ pip_required_pip_packages | map('quote') | join(' ') }}"
+        state: "{{ pip_install_package_state }}"
+        extra_args: >-
+          {{ (pip_install_upper_constraints is defined) | ternary('--constraint ' + pip_install_upper_constraints | default(''),'') }}
+          {{ pip_install_options }}
+      register: install_packages
+      until: install_packages | success
+      retries: 5
+      delay: 2
 
-- name: Install pip packages (fall back mode)
-  pip:
-    name: "{{ pip_required_pip_packages | map('quote') | join(' ') }}"
-    state: "{{ pip_install_package_state }}"
-    extra_args: >-
-      --isolated
-      {{ (pip_install_upper_constraints is defined) | ternary('--constraint ' + pip_install_upper_constraints | default(''),'') }}
-      {{ pip_install_options }}
-  when: install_packages | failed
-  register: install_packages_fall_back
-  until: install_packages_fall_back | success
-  retries: 5
-  delay: 2
+  rescue:
+    - name: Install pip packages (fall back mode)
+      pip:
+        name: "{{ pip_required_pip_packages | map('quote') | join(' ') }}"
+        state: "{{ pip_install_package_state }}"
+        extra_args: >-
+          --isolated
+          {{ (pip_install_upper_constraints is defined) | ternary('--constraint ' + pip_install_upper_constraints | default(''),'') }}
+          {{ pip_install_options }}
+      register: install_packages_fall_back
+      until: install_packages_fall_back | success
+      retries: 5
+      delay: 2
