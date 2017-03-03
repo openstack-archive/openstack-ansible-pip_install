@@ -15,10 +15,4 @@
 
 - include: pre_install.yml
 
-- include: install_online.yml
-  static: no
-  when: not pip_offline_install | bool
-
-- include: install_offline.yml
-  static: no
-  when: pip_offline_install | bool
+- include: "install_{{ pip_offline_install | ternary('offline', 'online') }}.yml"
