@@ -13,32 +13,33 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-- name: Get Modern PIP
-  get_url:
-    url: "{{ pip_upstream_url }}"
-    dest: "/opt/get-pip.py"
-    force: "{{ pip_get_pip_force | bool }}"
-    validate_certs: "{{ pip_validate_certs }}"
-  register: get_pip
-  until: get_pip | success
-  failed_when: false
-  retries: 5
-  delay: 2
-  tags:
-    - pip-install-script
+- block:
+    - name: Get Modern PIP
+      get_url:
+        url: "{{ pip_upstream_url }}"
+        dest: "/opt/get-pip.py"
+        force: "{{ pip_get_pip_force | bool }}"
+        validate_certs: "{{ pip_validate_certs }}"
+      register: get_pip
+      until: get_pip | success
+      retries: 5
+      delay: 2
+      tags:
+        - pip-install-script
 
-- name: Get Modern PIP using fallback URL
-  get_url:
-    url: "{{ pip_fallback_url }}"
-    dest: "/opt/get-pip.py"
-    force: "{{ pip_get_pip_force | bool }}"
-    validate_certs: "{{ pip_validate_certs }}"
-  when: get_pip | failed
-  register: get_pip_fallback
-  until: get_pip_fallback | success
-  retries: 5
-  delay: 2
-  tags:
-    - pip-install-script
+  rescue:
+    - name: Get Modern PIP using fallback URL
+      get_url:
+        url: "{{ pip_fallback_url }}"
+        dest: "/opt/get-pip.py"
+        force: "{{ pip_get_pip_force | bool }}"
+        validate_certs: "{{ pip_validate_certs }}"
+      when: get_pip | failed
+      register: get_pip_fallback
+      until: get_pip_fallback | success
+      retries: 5
+      delay: 2
+      tags:
+        - pip-install-script
 
 - include: install_source.yml

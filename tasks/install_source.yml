@@ -19,7 +19,7 @@
         python /opt/get-pip.py {{ pip_source_install_options }}
                                {{ pip_get_pip_options }}
                                {{ pip_packages | map('quote') | join (' ') }}
-      changed_when: false
+      changed_when: pip_install.stdout.find('Successfully installed') != -1
       register: pip_install
       until: pip_install | success
       retries: 3
@@ -31,6 +31,7 @@
         python /opt/get-pip.py --isolated {{ pip_source_install_options }}
                                           {{ pip_get_pip_options }}
                                           {{ pip_packages | map('quote') | join (' ') }}
+      changed_when: pip_install_fall_back.stdout.find('Successfully installed') != -1
       register: pip_install_fall_back
       until: pip_install_fall_back | success
       retries: 3

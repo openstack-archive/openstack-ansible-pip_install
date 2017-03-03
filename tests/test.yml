@@ -34,9 +34,11 @@
     - name: Get pip path
       command: which pip
       register: pip_path
+      changed_when: false
     - name: Get pip version
       command: "{{ pip_path.stdout }} -V"
       register: pip_version
+      changed_when: false
     - name: Check role functions
       assert:
         that:

@@ -13,44 +13,44 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-- name: Get Modern PIP to local
-  local_action:
-    module: get_url
-    url: "{{ pip_upstream_url }}"
-    dest: "/tmp/get-pip.py"
-    force: "yes"
-    validate_certs: "{{ pip_validate_certs }}"
-  register: get_pip_local
-  until: get_pip_local | success
-  failed_when: false
-  retries: 5
-  delay: 2
-  run_once: yes
-  notify:
-    - Clean up local get-pip.py
-  tags:
-    - pip-install-local
-    - pip-install-script
+- block:
+    - name: Get Modern PIP to local
+      local_action:
+        module: get_url
+        url: "{{ pip_upstream_url }}"
+        dest: "/tmp/get-pip.py"
+        force: "yes"
+        validate_certs: "{{ pip_validate_certs }}"
+      register: get_pip_local
+      until: get_pip_local | success
+      retries: 5
+      delay: 2
+      run_once: yes
+      notify:
+        - Clean up local get-pip.py
+      tags:
+        - pip-install-local
+        - pip-install-script
 
-- name: Get Modern PIP using fallback URL to local
-  local_action:
-    module: get_url
-    url: "{{ pip_fallback_url }}"
-    dest: "/tmp/get-pip.py"
-    force: "yes"
-    validate_certs: "{{ pip_validate_certs }}"
-  when: get_pip_local | failed
-  register: get_pip_local_fallback
-  until: get_pip_local_fallback | success
-  retries: 5
-  delay: 2
-  run_once: yes
-  notify:
-    - Clean up local get-pip.py
-  tags:
-    - pip-install-local
-    - pip-install-script
-
+  rescue:
+    - name: Get Modern PIP using fallback URL to local
+      local_action:
+        module: get_url
+        url: "{{ pip_fallback_url }}"
+        dest: "/tmp/get-pip.py"
+        force: "yes"
+        validate_certs: "{{ pip_validate_certs }}"
+      when: get_pip_local | failed
+      register: get_pip_local_fallback
+      until: get_pip_local_fallback | success
+      retries: 5
+      delay: 2
+      run_once: yes
+      notify:
+        - Clean up local get-pip.py
+      tags:
+        - pip-install-local
+        - pip-install-script
 
 - name: Create local pip package cache
   local_action:
@@ -66,7 +66,7 @@
 - name: pip cache install files locally
   local_action: >
     command python /tmp/get-pip.py -d '{{ pip_tmp_packages | quote }}' {{ pip_get_pip_options }} {{ pip_packages | map('quote') | join (' ') }}
-  changed_when: false
+  changed_when: pip_local_cache.stdout.find('Successfully downloaded') != -1
   register: pip_local_cache
   until: pip_local_cache | success
   retries: 3

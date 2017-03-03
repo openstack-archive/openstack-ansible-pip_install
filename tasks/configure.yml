@@ -45,6 +45,7 @@
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_group_id|default(ansible_user_id) }}"
     mode: "0644"
+    force: no
   tags:
     - pip-files
 
