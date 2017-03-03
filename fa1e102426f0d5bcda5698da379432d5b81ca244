@@ -1,0 +1,9 @@
+Code-Review+2: Logan V <logan2211@gmail.com>
+Code-Review+2: Jimmy McCrory <jimmy.mccrory@gmail.com>
+Workflow+1: Logan V <logan2211@gmail.com>
+Verified+2: Jenkins
+Submitted-by: Jenkins
+Submitted-at: Fri, 03 Mar 2017 20:41:07 +0000
+Reviewed-on: https://review.openstack.org/441434
+Project: openstack/openstack-ansible-pip_install
+Branch: refs/heads/master
