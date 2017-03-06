@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-pip_install_external_repo_key_package: "https://rdoproject.org/repos/openstack-ocata/rdo-release-ocata.rpm"
+pip_install_external_repo_key_package: "https://repos.fedorapeople.org/repos/openstack/openstack-ocata/rdo-release-ocata.rpm"
 
 pip_install_distro_build_packages:
   - gcc
@@ -31,3 +31,4 @@ pip_required_pip_packages:
 pip_install_remove_distro_packages:
   - centos-openstack-release-*
   - centos-release-qemu-ev
+  - epel-release
