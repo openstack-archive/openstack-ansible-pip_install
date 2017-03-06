@@ -1,0 +1,9 @@
+Code-Review+2: Major Hayden <major@mhtx.net>
+Code-Review+2: Amy Marrich (spotz) <amy@demarco.com>
+Workflow+1: Amy Marrich (spotz) <amy@demarco.com>
+Verified+2: Jenkins
+Submitted-by: Jenkins
+Submitted-at: Mon, 06 Mar 2017 18:58:56 +0000
+Reviewed-on: https://review.openstack.org/442086
+Project: openstack/openstack-ansible-pip_install
+Branch: refs/heads/stable/newton
