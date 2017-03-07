@@ -19,7 +19,7 @@
     cache_valid_time: "{{ cache_timeout }}"
 
 # Under Ubuntu, this will only add the key
-- name: Install external repo key with package
+- name: Install UCA repository key
   apt:
     name: "{{ pip_install_external_repo_key_package }}"
     state: "{{ pip_install_external_repo_key_package_state | default('present') }}"
@@ -28,7 +28,7 @@
   tags:
     - add-repo-keys
 
-- name: Install repo for distro binaries
+- name: Install UCA repository
   apt_repository:
     repo: "{{ uca_repo }}"
     state: present
