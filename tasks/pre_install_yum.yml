@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Under CentOS, this will add the repo and its key to the keyring
+# Under CentOS, this will add the RDO repo and its key to the keyring
 - name: Install RDO repository and key
   yum:
     name: "{{ pip_install_external_repo_key_package }}"
@@ -23,23 +23,29 @@
   tags:
     - add-repo-keys
 
-# NOTE: All yum repositories are priority 99 (lowest possible) by default.
-#       EPEL and RDO have packages that conflict (especially with RabbitMQ's
-#       Erlang dependencies). This task ensures that RDO is always preferred
-#       over EPEL when both are configured.
-# TODO(mhayden): If the yum_repository module is improved to allow for edits to
-#                existing repository files, this task should be updated to use
-#                yum_repository instead of ini_file.
-#                Ansible bug: https://github.com/ansible/ansible/issues/22362
-- name: Increase priority for RDO repository
-  ini_file:
-    dest: "{{ item.path }}"
-    section: "{{ item.section }}"
-    option: priority
-    value: 50
+- name: Install EPEL and yum priorities plugin
+  yum:
+    name: "{{ item }}"
+    state: "{{ pip_install_package_state }}"
   with_items:
-    - { path: "/etc/yum.repos.d/rdo-release.repo", section: "openstack-ocata" }
-    - { path: "/etc/yum.repos.d/rdo-qemu-ev.repo", section: "rdo-qemu-ev"}
+    - epel-release
+    - yum-plugin-priorities
+  when:
+    - user_external_repo_key is not defined
+  tags:
+    - add-repo-keys
+
+- name: Increase RDO priority to 50
+  command: >
+    yum-config-manager
+      --enable openstack-ocata
+      --setopt="openstack-ocata.priority=50"
+      --enable rdo-qemu-ev
+      --setopt="rdo-qemu-ev.priority=50"
+  when:
+    - user_external_repo_key is not defined
+  tags:
+    - add-repo-keys
 
 - name: Install external repo key manually
   rpm_key:

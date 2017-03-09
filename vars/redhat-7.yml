@@ -32,4 +32,3 @@ pip_required_pip_packages:
 pip_install_remove_distro_packages:
   - centos-openstack-release-*
   - centos-release-qemu-ev
-  - epel-release
