@@ -27,7 +27,6 @@
 - include: configure.yml
   tags:
     - pip_install-install
-    - pip-configuration
 
 - include: install.yml
   tags:
