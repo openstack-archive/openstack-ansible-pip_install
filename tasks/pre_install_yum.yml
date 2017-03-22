@@ -30,6 +30,7 @@
   with_items:
     - epel-release
     - yum-plugin-priorities
+    - yum-utils
   when:
     - user_external_repo_key is not defined
   tags:
