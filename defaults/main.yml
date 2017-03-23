@@ -17,36 +17,36 @@ uca_enable: True
 uca_apt_repo_url: "http://ubuntu-cloud.archive.canonical.com/ubuntu"
 
 # If you want to use your own keys for UCA or RDO (instead of ubuntu or
-# CentOS defaults), please define user_external_repo_key dict with
-# keys/values corresponding to the ansible module arguments for your
-# distribution.
+# CentOS defaults), please define user_external_repo_key_list, a list
+# of dictionaries, each dict with keys/values corresponding to the
+# ansible module arguments for your distribution.
 #
 # For CentOS you'd define the following:
-#user_external_repo_key:
-#  key: https://my-repo.example.com/signing-key.asc
+#user_external_repo_keys_list:
+#  - key: https://my-repo.example.com/signing-key.asc
 # You could also use key: <keyid> from a keyserver, see ansible rpm_key doc.
 # Validate cert option from the module is also supported.
 # In CentOS, refusing to use the RDO package also forces you to add your own
 # repository. See below to know how to include your own repository.
 #
 # For Ubuntu, you'd define the following:
-#user_external_repo_key:
-#  url: https://my-repo.example.com/signing-key.asc
+#user_external_repo_keys_list:
+#  - url: https://my-repo.example.com/signing-key.asc
 # This leverages apt_key module, and passes the id, keyserver, and url argument.
 # Therefore, you can ensure the id of the key you want to import with id: <keyid>
 # or replace the source url with a keyserver.
 
 # If you have defined another set of keys you want to include, the chances are
 # high you want to give also your own repository.
-# For CentOS, define the following dict+key/values:
-#user_external_repo:
-#  name: "mymirror"
-#  baseurl: "http://mymirrorurl/baseurl/"
+# For CentOS, define the following list +key/values:
+#user_external_repos_list:
+#  - name: "mymirror"
+#    baseurl: "http://mymirrorurl/baseurl/"
 #See also gpgcheck, gpgkey, description of the Ansible yum_repository module
 # For Ubuntu, define something like the following:
-#user_external_repo:
-#  repo: "deb http://mymirrorurl/ubuntu/ xenial main"
-#  filename: "mymirror"
+#user_external_repos_list:
+#  - repo: "deb http://mymirrorurl/ubuntu/ xenial main"
+#    filename: "mymirror"
 # If your mirror includes UCA mirroring, you may then want to disable using uca
 # by setting in your user variables uca_enable: False
 
