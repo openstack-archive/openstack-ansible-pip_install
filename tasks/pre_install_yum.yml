@@ -13,11 +13,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# NOTE(mhayden): GPG checking for local package installs is normally disabled
+# by default in CentOS, but the openstack-ansible-security role enables GPG
+# checking for local packages. The RDO repository package isn't signed, but the
+# repos it installs have GPG checking enabled.
 # Under CentOS, this will add the RDO repo and its key to the keyring
 - name: Install RDO repository and key
   yum:
     name: "{{ pip_install_external_repo_key_package }}"
     state: "{{ pip_install_external_repo_key_package_state | default('present') }}"
+    disable_gpg_check: yes
   when:
     - user_external_repo_key is not defined
   tags:
@@ -36,7 +41,7 @@
   tags:
     - add-repo-keys
 
-- name: Increase RDO priority to 50
+- name: Increase priority of all repos to 50 except EPEL
   command: >
     yum-config-manager
       --enable openstack-ocata
