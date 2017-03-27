@@ -1,0 +1,9 @@
+Code-Review+2: Andy McCrae <andy.mccrae@googlemail.com>
+Code-Review+2: Marc Gariépy <gariepy.marc@gmail.com>
+Workflow+1: Marc Gariépy <gariepy.marc@gmail.com>
+Verified+2: Jenkins
+Submitted-by: Jenkins
+Submitted-at: Mon, 27 Mar 2017 13:14:41 +0000
+Reviewed-on: https://review.openstack.org/449795
+Project: openstack/openstack-ansible-pip_install
+Branch: refs/heads/master
