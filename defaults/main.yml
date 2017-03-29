@@ -35,6 +35,7 @@ uca_apt_repo_url: "http://ubuntu-cloud.archive.canonical.com/ubuntu"
 # This leverages apt_key module, and passes the id, keyserver, and url argument.
 # Therefore, you can ensure the id of the key you want to import with id: <keyid>
 # or replace the source url with a keyserver.
+user_external_repo_keys_list: []
 
 # If you have defined another set of keys you want to include, the chances are
 # high you want to give also your own repository.
@@ -49,6 +50,7 @@ uca_apt_repo_url: "http://ubuntu-cloud.archive.canonical.com/ubuntu"
 #    filename: "mymirror"
 # If your mirror includes UCA mirroring, you may then want to disable using uca
 # by setting in your user variables uca_enable: False
+user_external_repos_list: []
 
 # Set the package install state for distribution packages
 # Options are 'present' and 'latest'

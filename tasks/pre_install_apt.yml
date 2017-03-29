@@ -66,8 +66,6 @@
   retries: 5
   delay: 2
   with_items: "{{ user_external_repo_keys_list }}"
-  when:
-    - user_external_repo_keys_list is defined
   tags:
     - add-repo-keys
 
@@ -82,7 +80,5 @@
   retries: 5
   delay: 2
   with_items: "{{ user_external_repos_list }}"
-  when:
-    - user_external_repos_list is defined
   tags:
     - add-external-repo
