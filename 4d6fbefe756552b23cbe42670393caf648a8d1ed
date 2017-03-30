@@ -1,0 +1,10 @@
+Code-Review+2: Andy McCrae <andy.mccrae@googlemail.com>
+Code-Review+1: Neill Cox <neill@ingenious.com.au>
+Code-Review+2: Major Hayden <major@mhtx.net>
+Workflow+1: Major Hayden <major@mhtx.net>
+Verified+2: Jenkins
+Submitted-by: Jenkins
+Submitted-at: Thu, 30 Mar 2017 12:53:04 +0000
+Reviewed-on: https://review.openstack.org/451513
+Project: openstack/openstack-ansible-pip_install
+Branch: refs/heads/stable/ocata
