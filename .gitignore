@@ -59,5 +59,11 @@ ChangeLog
 # Files created by releasenotes build
 releasenotes/build
 
+# Test temp files
+tests/common
+tests/plugins
+tests/playbooks
+tests/test.retry
+
 # Vagrant testing artifacts
 .vagrant
