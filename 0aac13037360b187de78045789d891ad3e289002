@@ -1,0 +1,9 @@
+Code-Review+2: Jimmy McCrory <jimmy.mccrory@gmail.com>
+Code-Review+2: Amy Marrich (spotz) <amy@demarco.com>
+Workflow+1: Amy Marrich (spotz) <amy@demarco.com>
+Verified+2: Jenkins
+Submitted-by: Jenkins
+Submitted-at: Mon, 24 Apr 2017 19:30:44 +0000
+Reviewed-on: https://review.openstack.org/459430
+Project: openstack/openstack-ansible-pip_install
+Branch: refs/heads/master
