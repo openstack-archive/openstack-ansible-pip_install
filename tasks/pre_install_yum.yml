@@ -54,6 +54,7 @@
       --setopt="updates.priority=50"
       --enable extras
       --setopt="extras.priority=50"
+      --enable epel
   changed_when: false
   when:
     - user_external_repo_key is not defined
