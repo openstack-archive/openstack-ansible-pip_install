@@ -29,6 +29,11 @@ pip_required_pip_packages:
   - requests # SSL SNI support
   - urllib3 # SSL SNI support
 
+pip_epel_prep_distro_packages:
+  - epel-release
+  - yum-plugin-priorities
+  - yum-utils
+
 pip_install_remove_distro_packages:
   - centos-openstack-release-*
   - centos-release-qemu-ev
