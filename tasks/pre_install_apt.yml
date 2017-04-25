@@ -13,16 +13,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-- name: Ensure apt cache is up to date
-  apt:
-    update_cache: yes
-    cache_valid_time: "{{ cache_timeout }}"
-
 # Under Ubuntu, this will only add the key
 - name: Install UCA repository key
   apt:
     name: "{{ pip_install_external_repo_key_package }}"
     state: "{{ pip_install_external_repo_key_package_state | default('present') }}"
+    update_cache: yes
+    cache_valid_time: "{{ cache_timeout }}"
   when:
     - user_external_repo_key is not defined
   tags:
