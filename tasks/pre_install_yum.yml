@@ -56,9 +56,6 @@
       priority: 50
     - name: updates
       priority: 50
-  tags:
-    - openstack-yum-packages
-    - openstack-packages
   when:
     - user_external_repo_key is not defined
   tags:
