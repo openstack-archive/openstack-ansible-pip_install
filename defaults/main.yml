@@ -86,6 +86,8 @@ pip_install_build_packages: yes
 # wheel and any other packages which must be installed when pip installs.
 pip_packages:
   - pip
+  - setuptools
+  - wheel
 
 pip_required_pip_packages: []
 
