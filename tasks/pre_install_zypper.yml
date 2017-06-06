@@ -12,3 +12,17 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+#
+
+- name: Add zypper cloud repository
+  zypper_repository:
+    auto_import_keys: yes
+    autorefresh: yes
+    name: "{{ item.name }}"
+    repo: "{{ item.uri }}"
+    runrefresh: yes
+  with_items: "{{ pip_install_external_repo }}"
+  when:
+    - user_external_repo_key is not defined
+  tags:
+    - add-repo-keys
