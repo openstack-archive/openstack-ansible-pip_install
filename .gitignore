@@ -29,6 +29,7 @@ doc/build/
 *.log
 *.sql
 *.sqlite
+logs/*
 
 # OS generated files #
 ######################
@@ -61,9 +62,10 @@ releasenotes/build
 
 # Test temp files
 tests/common
-tests/plugins
-tests/playbooks
-tests/test.retry
+tests/*.retry
 
-# Vagrant testing artifacts
+# Vagrant artifacts
 .vagrant
+
+# Git clones
+openstack-ansible-ops
