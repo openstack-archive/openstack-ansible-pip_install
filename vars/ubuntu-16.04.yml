@@ -14,7 +14,7 @@
 # limitations under the License.
 
 # Ubuntu Cloud Archive variables
-uca_openstack_release: ocata
+uca_openstack_release: pike
 uca_repo_dist: "{{ ansible_lsb.codename }}-updates/{{ uca_openstack_release }}"
 uca_repo: "deb {{ uca_apt_repo_url }} {{ uca_repo_dist }} main"
 pip_install_external_repo_key_package: "ubuntu-cloud-keyring"
