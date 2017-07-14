@@ -14,13 +14,12 @@
 # limitations under the License.
 
 pip_install_external_repo_key_package: "https://rdoproject.org/repos/openstack-newton/rdo-release-newton.rpm"
+
 pip_install_distro_packages:
   - gcc
   - libffi-devel
   - openssl-devel
   - python-devel
-  - python-pyasn1
-  - pyOpenSSL
 
 pip_install_remove_distro_packages:
   - centos-openstack-release-*

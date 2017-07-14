@@ -20,10 +20,7 @@ uca_repo: "deb {{ uca_apt_repo_url }} {{ uca_repo_dist }} main"
 pip_install_external_repo_key_package: "ubuntu-cloud-keyring"
 
 pip_install_distro_packages:
-  - build-essential
-  - python-setuptools
+  - gcc
   - libffi-dev
   - libssl-dev
   - python-dev
-  - python-openssl
-  - python-pyasn1
