@@ -12,7 +12,7 @@ OpenStack-Ansible pip install
 =============================
 
 Documentation for the project can be found at:
-  http://docs.openstack.org/developer/openstack-ansible-pip_install/
+  https://docs.openstack.org/openstack-ansible-pip_install/latest/
 
 The project home is at:
   http://launchpad.net/openstack-ansible
