@@ -20,15 +20,14 @@ uca_repo: "deb {{ uca_apt_repo_url }} {{ uca_repo_dist }} main"
 pip_install_external_repo_key_package: "ubuntu-cloud-keyring"
 
 pip_install_distro_build_packages:
-  - build-essential
+  - gcc
   - python-dev
-  - python-setuptools
   - libffi-dev
   - libssl-dev
   - python3-dev
-  - python-openssl
-  - python-pyasn1
 
 pip_required_pip_packages:
-  - urllib3 # SSL SNI support
+  - pyasn1 # SSL SNI support
+  - pyOpenSSL # SSL SNI support
   - requests # SSL SNI support
+  - urllib3 # SSL SNI support
