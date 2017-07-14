@@ -20,12 +20,12 @@ pip_install_distro_build_packages:
   - libffi-devel
   - openssl-devel
   - python-devel
-  - python-pyasn1
-  - python2-pyOpenSSL
   - yum-plugin-priorities
 
 pip_required_pip_packages:
   - ndg-httpsclient # SSL SNI support
+  - pyasn1 # SSL SNI support
+  - pyOpenSSL # SSL SNI support
   - requests # SSL SNI support
   - urllib3 # SSL SNI support
 
