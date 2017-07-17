@@ -1,0 +1,10 @@
+Code-Review+1: Miguel Alex Cantu (alextricity25) <miguel.cantu@rackspace.com>
+Code-Review+2: Major Hayden <major@mhtx.net>
+Code-Review+2: Marc Gariépy <gariepy.marc@gmail.com>
+Workflow+1: Marc Gariépy <gariepy.marc@gmail.com>
+Verified+2: Jenkins
+Submitted-by: Jenkins
+Submitted-at: Mon, 17 Jul 2017 13:35:56 +0000
+Reviewed-on: https://review.openstack.org/483905
+Project: openstack/openstack-ansible-pip_install
+Branch: refs/heads/master
