@@ -1,0 +1,11 @@
+Code-Review+2: Andy McCrae <andy.mccrae@googlemail.com>
+Code-Review+1: Miguel Alex Cantu (alextricity25) <miguel.cantu@rackspace.com>
+Code-Review+1: Markos Chandras (hwoarang) <mchandras@suse.de>
+Code-Review+2: Major Hayden <major@mhtx.net>
+Workflow+1: Major Hayden <major@mhtx.net>
+Verified+2: Jenkins
+Submitted-by: Jenkins
+Submitted-at: Thu, 20 Jul 2017 14:00:34 +0000
+Reviewed-on: https://review.openstack.org/485628
+Project: openstack/openstack-ansible-pip_install
+Branch: refs/heads/master
