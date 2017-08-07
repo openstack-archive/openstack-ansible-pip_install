@@ -24,7 +24,7 @@
 
 - include: "pre_install_{{ ansible_pkg_mgr }}.yml"
 
-- name: Install packages
+- name: Install distro packages
   package:
     name: "{{ pip_install_distro_packages }}"
     state: "{{ pip_install_package_state }}"
