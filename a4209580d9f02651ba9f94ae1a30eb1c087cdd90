@@ -1,0 +1,10 @@
+Code-Review+2: Jimmy McCrory <jimmy.mccrory@gmail.com>
+Code-Review+1: Matt Thompson <mattt@defunct.ca>
+Code-Review+2: Kevin Carter (cloudnull) <kevin@cloudnull.com>
+Workflow+1: Kevin Carter (cloudnull) <kevin@cloudnull.com>
+Verified+2: Jenkins
+Submitted-by: Jenkins
+Submitted-at: Tue, 08 Aug 2017 20:33:01 +0000
+Reviewed-on: https://review.openstack.org/491585
+Project: openstack/openstack-ansible-pip_install
+Branch: refs/heads/master
