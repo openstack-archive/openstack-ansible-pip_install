@@ -127,3 +127,7 @@ pip_install_options: ""
 
 # Always force getting the latest get-pip script
 pip_get_pip_force: yes
+
+# Set default mirror for CentOS repositories
+# NOTE(mhayden): Ensure that the full path to the 'centos' directory is used.
+#pip_install_centos_mirror_url: 'http://mirror.centos.org/centos'
