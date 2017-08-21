@@ -36,4 +36,6 @@ pip_epel_prep_distro_packages:
 
 pip_install_remove_distro_packages:
   - centos-openstack-release-*
+  - centos-release-ceph-jewel
   - centos-release-qemu-ev
+  - centos-release-storage-common
