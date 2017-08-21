@@ -1,0 +1,9 @@
+Code-Review+2: Logan V <logan2211@gmail.com>
+Code-Review+2: Markos Chandras (hwoarang) <mchandras@suse.de>
+Workflow+1: Markos Chandras (hwoarang) <mchandras@suse.de>
+Verified+2: Jenkins
+Submitted-by: Jenkins
+Submitted-at: Mon, 21 Aug 2017 13:56:10 +0000
+Reviewed-on: https://review.openstack.org/492601
+Project: openstack/openstack-ansible-pip_install
+Branch: refs/heads/master
