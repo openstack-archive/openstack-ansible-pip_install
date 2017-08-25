@@ -1,0 +1,9 @@
+Code-Review+2: Major Hayden <major@mhtx.net>
+Code-Review+2: Markos Chandras (hwoarang) <mchandras@suse.de>
+Workflow+1: Markos Chandras (hwoarang) <mchandras@suse.de>
+Verified+2: Jenkins
+Submitted-by: Jenkins
+Submitted-at: Fri, 25 Aug 2017 05:52:22 +0000
+Reviewed-on: https://review.openstack.org/497519
+Project: openstack/openstack-ansible-pip_install
+Branch: refs/heads/stable/pike
