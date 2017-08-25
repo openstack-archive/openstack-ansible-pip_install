@@ -1,0 +1,9 @@
+Code-Review+2: Markos Chandras (hwoarang) <mchandras@suse.de>
+Code-Review+2: Major Hayden <major@mhtx.net>
+Workflow+1: Major Hayden <major@mhtx.net>
+Verified+2: Jenkins
+Submitted-by: Jenkins
+Submitted-at: Fri, 25 Aug 2017 13:46:02 +0000
+Reviewed-on: https://review.openstack.org/497909
+Project: openstack/openstack-ansible-pip_install
+Branch: refs/heads/stable/ocata
