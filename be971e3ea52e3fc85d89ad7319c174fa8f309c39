@@ -1,0 +1,9 @@
+Code-Review+2: Major Hayden <major@mhtx.net>
+Code-Review+2: Jean-Philippe Evrard <jean-philippe.evrard@rackspace.co.uk>
+Workflow+1: Jean-Philippe Evrard <jean-philippe.evrard@rackspace.co.uk>
+Verified+2: Jenkins
+Submitted-by: Jenkins
+Submitted-at: Sat, 26 Aug 2017 00:10:54 +0000
+Reviewed-on: https://review.openstack.org/498043
+Project: openstack/openstack-ansible-pip_install
+Branch: refs/heads/stable/newton
