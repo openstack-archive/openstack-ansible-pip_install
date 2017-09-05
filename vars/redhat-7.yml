@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-pip_install_external_repo_key_package: "https://repos.fedorapeople.org/repos/openstack/openstack-ocata/rdo-release-ocata.rpm"
+pip_install_external_repo_key_package: "https://repos.fedorapeople.org/repos/openstack/openstack-pike/rdo-release-pike-1.noarch.rpm"
 
 pip_install_distro_build_packages:
   - gcc
