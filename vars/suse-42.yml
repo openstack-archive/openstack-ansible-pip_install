@@ -15,7 +15,7 @@
 
 pip_install_external_repo:
   - name: "OBS:Cloud:OpenStack:Pike"
-    uri: "http://download.opensuse.org/repositories/Cloud:/OpenStack:/Pike/openSUSE_Leap_{{ ansible_distribution_version }}"
+    uri: "{{ pip_install_opensuse_mirror_obs_url }}/repositories/Cloud:/OpenStack:/Pike/openSUSE_Leap_{{ ansible_distribution_version }}"
 
 pip_install_distro_build_packages:
   - gcc

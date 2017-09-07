@@ -14,6 +14,17 @@
 # limitations under the License.
 #
 
+- name: Ensure that openSUSE repositories are using the correct openSUSE mirror
+  zypper_repository:
+    auto_import_keys: yes
+    autorefresh: yes
+    name: "{{ item.name }}"
+    repo: "{{ item.url }}"
+  with_items:
+    - { name: "repo-oss", url: "{{ pip_install_opensuse_mirror_url }}/distribution/leap/{{ ansible_distribution_version }}/repo/oss" }
+    - { name: "repo-update", url: "{{ pip_install_opensuse_mirror_url }}/update/leap/{{ ansible_distribution_version }}/oss/" }
+  when: pip_install_opensuse_mirror_url is defined
+
 - name: Add zypper cloud repository
   zypper_repository:
     auto_import_keys: yes
@@ -22,7 +33,5 @@
     repo: "{{ item.uri }}"
     runrefresh: yes
   with_items: "{{ pip_install_external_repo }}"
-  when:
-    - user_external_repo_key is not defined
   tags:
     - add-repo-keys
