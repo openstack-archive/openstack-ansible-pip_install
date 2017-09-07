@@ -131,3 +131,11 @@ pip_get_pip_force: yes
 # Set default mirror for CentOS repositories
 # NOTE(mhayden): Ensure that the full path to the 'centos' directory is used.
 #pip_install_centos_mirror_url: 'http://mirror.centos.org/centos'
+
+## Set default mirror for openSUSE repositories
+# NOTE(hwoarang): Ensure that the full path to the 'opensuse' directory is used.
+# Additionally, set 'pip_install_opensuse_mirror_obs_url' to a mirror which also mirrors
+# the OBS repositories. If you want to use the same mirror in both cases, then leave the
+# 'pip_install_opensuse_mirror_obs_url' to its default value.
+#pip_install_opensuse_mirror_url: 'http://widehat.opensuse.org'
+pip_install_opensuse_mirror_obs_url: "{{ pip_install_opensuse_mirror_url | default('http://download.opensuse.org') }}"
