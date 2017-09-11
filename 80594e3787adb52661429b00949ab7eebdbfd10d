@@ -1,0 +1,9 @@
+Code-Review+2: Andy McCrae <andy.mccrae@googlemail.com>
+Code-Review+2: Jean-Philippe Evrard <jean-philippe.evrard@rackspace.co.uk>
+Workflow+1: Jean-Philippe Evrard <jean-philippe.evrard@rackspace.co.uk>
+Verified+2: Jenkins
+Submitted-by: Jenkins
+Submitted-at: Mon, 11 Sep 2017 18:56:19 +0000
+Reviewed-on: https://review.openstack.org/502489
+Project: openstack/openstack-ansible-pip_install
+Branch: refs/heads/master
