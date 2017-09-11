@@ -22,13 +22,6 @@ pip_install_distro_build_packages:
   - python-devel
   - yum-plugin-priorities
 
-pip_required_pip_packages:
-  - ndg-httpsclient # SSL SNI support
-  - pyasn1 # SSL SNI support
-  - pyOpenSSL # SSL SNI support
-  - requests # SSL SNI support
-  - urllib3 # SSL SNI support
-
 pip_epel_prep_distro_packages:
   - epel-release
   - yum-plugin-priorities
