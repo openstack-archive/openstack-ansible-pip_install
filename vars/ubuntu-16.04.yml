@@ -25,9 +25,3 @@ pip_install_distro_build_packages:
   - libffi-dev
   - libssl-dev
   - python3-dev
-
-pip_required_pip_packages:
-  - pyasn1 # SSL SNI support
-  - pyOpenSSL # SSL SNI support
-  - requests # SSL SNI support
-  - urllib3 # SSL SNI support
