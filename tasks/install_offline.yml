@@ -95,5 +95,3 @@
 - name: Set source install pip_get_pip_options
   set_fact:
     pip_source_install_options: "--no-index --find-links={{ pip_tmp_packages | quote }}"
-
-- include: install_source.yml

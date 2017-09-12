@@ -41,5 +41,3 @@
       delay: 2
       tags:
         - pip-install-script
-
-- include: install_source.yml
