@@ -28,6 +28,14 @@
   tags:
     - pip_install-install
 
-- include: install.yml
+- include: pre_install.yml
+  tags:
+    - pip_install-install
+
+- include: "install_{{ pip_offline_install | ternary('offline', 'online') }}.yml"
+  tags:
+    - pip_install-install
+
+- include: install_source.yml
   tags:
     - pip_install-install
