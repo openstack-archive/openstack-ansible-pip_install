@@ -1,0 +1,9 @@
+Code-Review+2: Jesse Pretorius (odyssey4me) <jesse.pretorius@rackspace.co.uk>
+Code-Review+2: Major Hayden <major@mhtx.net>
+Workflow+1: Major Hayden <major@mhtx.net>
+Verified+2: Jenkins
+Submitted-by: Jenkins
+Submitted-at: Wed, 20 Sep 2017 13:45:15 +0000
+Reviewed-on: https://review.openstack.org/505428
+Project: openstack/openstack-ansible-pip_install
+Branch: refs/heads/master
