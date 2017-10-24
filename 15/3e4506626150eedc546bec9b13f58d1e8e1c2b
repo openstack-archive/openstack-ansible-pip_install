@@ -1,0 +1,9 @@
+Code-Review+2: Major Hayden <major@mhtx.net>
+Code-Review+2: Kevin Carter (cloudnull) <kevin@cloudnull.com>
+Workflow+1: Kevin Carter (cloudnull) <kevin@cloudnull.com>
+Verified+2: Zuul
+Submitted-by: Zuul
+Submitted-at: Tue, 24 Oct 2017 15:01:53 +0000
+Reviewed-on: https://review.openstack.org/514300
+Project: openstack/openstack-ansible-pip_install
+Branch: refs/heads/stable/ocata
