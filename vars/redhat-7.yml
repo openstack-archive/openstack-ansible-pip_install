@@ -35,9 +35,9 @@ pip_install_remove_distro_packages:
 
 pip_install_rdo_repos_keys:
   - repo: openstack-pike
-    keyid: 764429E6
+    keyfile: /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-SIG-Cloud
   - repo: rdo-qemu-ev
-    keyid: 61E8806C
+    keyfile: /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-SIG-Virtualization-RDO
 
 pip_install_rdo_repos:
   - file: rdo-qemu-ev
