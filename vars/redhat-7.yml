@@ -35,9 +35,9 @@ pip_install_remove_distro_packages:
 
 pip_install_rdo_repos_keys:
   - repo: openstack-pike
-    keyid: 764429E6
+    keyfile: /tmp/764429E6
   - repo: rdo-qemu-ev
-    keyid: 61E8806C
+    keyfile: /tmp/61E8806C
 
 pip_install_rdo_repos:
   - file: rdo-qemu-ev
