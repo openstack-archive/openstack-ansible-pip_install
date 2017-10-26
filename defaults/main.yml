@@ -13,45 +13,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-uca_enable: True
-uca_apt_repo_url: "http://ubuntu-cloud.archive.canonical.com/ubuntu"
-
-# If you want to use your own keys for UCA or RDO (instead of ubuntu or
-# CentOS defaults), please define user_external_repo_key_list, a list
-# of dictionaries, each dict with keys/values corresponding to the
-# ansible module arguments for your distribution.
-#
-# For CentOS you'd define the following:
-#user_external_repo_keys_list:
-#  - key: https://my-repo.example.com/signing-key.asc
-# You could also use key: <keyid> from a keyserver, see ansible rpm_key doc.
-# Validate cert option from the module is also supported.
-# In CentOS, refusing to use the RDO package also forces you to add your own
-# repository. See below to know how to include your own repository.
-#
-# For Ubuntu, you'd define the following:
-#user_external_repo_keys_list:
-#  - url: https://my-repo.example.com/signing-key.asc
-# This leverages apt_key module, and passes the id, keyserver, and url argument.
-# Therefore, you can ensure the id of the key you want to import with id: <keyid>
-# or replace the source url with a keyserver.
-user_external_repo_keys_list: []
-
-# If you have defined another set of keys you want to include, the chances are
-# high you want to give also your own repository.
-# For CentOS, define the following list +key/values:
-#user_external_repos_list:
-#  - name: "mymirror"
-#    baseurl: "http://mymirrorurl/baseurl/"
-#See also gpgcheck, gpgkey, description of the Ansible yum_repository module
-# For Ubuntu, define something like the following:
-#user_external_repos_list:
-#  - repo: "deb http://mymirrorurl/ubuntu/ xenial main"
-#    filename: "mymirror"
-# If your mirror includes UCA mirroring, you may then want to disable using uca
-# by setting in your user variables uca_enable: False
-user_external_repos_list: []
-
 # Set the package install state for distribution packages
 # Options are 'present' and 'latest'
 pip_install_package_state: "latest"
@@ -143,15 +104,3 @@ pip_install_options: ""
 
 # Always force getting the latest get-pip script
 pip_get_pip_force: yes
-
-# Set default mirror for CentOS repositories
-# NOTE(mhayden): Ensure that the full path to the 'centos' directory is used.
-#pip_install_centos_mirror_url: 'http://mirror.centos.org/centos'
-
-## Set default mirror for openSUSE repositories
-# NOTE(hwoarang): Ensure that the full path to the 'opensuse' directory is used.
-# Additionally, set 'pip_install_opensuse_mirror_obs_url' to a mirror which also mirrors
-# the OBS repositories. If you want to use the same mirror in both cases, then leave the
-# 'pip_install_opensuse_mirror_obs_url' to its default value.
-#pip_install_opensuse_mirror_url: 'http://widehat.opensuse.org'
-pip_install_opensuse_mirror_obs_url: "{{ pip_install_opensuse_mirror_url | default('http://download.opensuse.org') }}"

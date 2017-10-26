@@ -13,8 +13,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-pip_install_external_repo_key_package: "https://repos.fedorapeople.org/repos/openstack/openstack-pike/rdo-release-pike-1.noarch.rpm"
-
 pip_install_distro_build_packages:
   - gcc
   - libffi-devel
@@ -22,48 +20,3 @@ pip_install_distro_build_packages:
   - openssl-devel
   - python-devel
   - yum-plugin-priorities
-
-pip_epel_prep_distro_packages:
-  - epel-release
-  - yum-plugin-priorities
-  - yum-utils
-
-pip_install_remove_distro_packages:
-  - centos-openstack-release-*
-  - centos-release-ceph-jewel
-  - centos-release-qemu-ev
-  - centos-release-storage-common
-
-pip_install_rdo_repos_keys:
-  - repo: openstack-pike
-    keyfile: /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-SIG-Cloud
-  - repo: rdo-qemu-ev
-    keyfile: /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-SIG-Virtualization-RDO
-
-pip_install_rdo_repos:
-  - file: rdo-qemu-ev
-    name: rdo-qemu-ev
-    description: "RDO CentOS-7 - QEMU EV"
-    baseurl: "{{ openstack_hosts_centos_mirror_url | default('http://mirror.centos.org') }}/centos/7/virt/x86_64/kvm-common/"
-    gpgcheck: yes
-    enabled: yes
-  - file: rdo-release
-    name: openstack-pike
-    description: "OpenStack Pike Repository"
-    baseurl: "{{ openstack_hosts_centos_mirror_url | default('http://mirror.centos.org') }}/centos/7/cloud/$basearch/openstack-pike/"
-    gpgcheck: yes
-    enabled: yes
-
-pip_install_repo_priorities:
-  - name: base
-    priority: 50
-  - name: epel
-    priority: 99
-  - name: extras
-    priority: 50
-  - name: openstack-pike
-    priority: 50
-  - name: rdo-qemu-ev
-    priority: 50
-  - name: updates
-    priority: 50
