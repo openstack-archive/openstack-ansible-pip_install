@@ -1,0 +1,8 @@
+Code-Review+2: Jean-Philippe Evrard <jean-philippe.evrard@rackspace.co.uk>
+Workflow+1: Jean-Philippe Evrard <jean-philippe.evrard@rackspace.co.uk>
+Verified+2: Zuul
+Submitted-by: Zuul
+Submitted-at: Wed, 01 Nov 2017 15:26:07 +0000
+Reviewed-on: https://review.openstack.org/516962
+Project: openstack/openstack-ansible-pip_install
+Branch: refs/heads/stable/pike
