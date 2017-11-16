@@ -22,6 +22,8 @@
     cache_valid_time: "{{ cache_timeout }}"
   when:
     - user_external_repo_key is not defined
+  retries: 5
+  delay: 2
   tags:
     - add-repo-keys
 
