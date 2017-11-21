@@ -21,4 +21,5 @@ pip_install_distro_build_packages:
   - gcc
   - libffi-devel
   - libopenssl-devel
+  - openssl
   - python-devel
