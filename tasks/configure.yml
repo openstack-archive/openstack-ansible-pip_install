@@ -23,19 +23,6 @@
     - "{{ ansible_env.HOME }}/.cache"
     - "{{ ansible_env.HOME }}/.cache/pip"
     - "{{ ansible_env.HOME }}/.pip"
-  tags:
-    - pip-directories
-
-- name: Drop pip file(s)
-  copy:
-    src: "selfcheck.json"
-    dest: "{{ ansible_env.HOME }}/.cache/pip/selfcheck.json"
-    owner: "{{ ansible_user_id }}"
-    group: "{{ ansible_group_id|default(ansible_user_id) }}"
-    mode: "0644"
-    force: no
-  tags:
-    - pip-files
 
 - name: Drop pip config
   config_template:
