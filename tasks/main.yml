@@ -25,6 +25,9 @@
     - always
 
 - include: configure.yml
+  static: no
+  when:
+    - pip_configure | bool
   tags:
     - pip_install-config
 

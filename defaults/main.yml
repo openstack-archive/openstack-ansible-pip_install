@@ -98,6 +98,13 @@ cache_timeout: 600
 # is intercepting the certificates.
 pip_validate_certs: "yes"
 
+# Boolean variable to set whether pip.conf should be
+# implemented to adjust pip's default behaviour.
+# By default we do this, but sometimes we want to
+# just let the default pip.conf on the system or
+# pip's default settings do their thing.
+pip_configure: true
+
 # Options for pip global
 pip_enable_pre_releases: true
 pip_timeout: 120
