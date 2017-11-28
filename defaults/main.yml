@@ -98,8 +98,6 @@ cache_timeout: 600
 # is intercepting the certificates.
 pip_validate_certs: "yes"
 
-pip_lock_to_internal_repo: False
-
 # Options for pip global
 pip_enable_pre_releases: true
 pip_timeout: 120
@@ -107,7 +105,18 @@ pip_timeout: 120
 # Options for pip install
 pip_upgrade: true
 
-# Drop link files to lock down pip
+# Enable/disable the configuration of the default index
+# False = default index is configured
+# True = default index is not configured
+# As this requires an alternative location to source
+# packages from, it requires there to be at least one
+# item in the pip_links list.
+pip_lock_to_internal_repo: False
+
+# Default index for pip to use
+pip_default_index: https://pypi.python.org/simple
+
+# Drop link files for additional places to source wheels from
 # Example:
 #   pip_links:
 #     - name: "openstack_release"

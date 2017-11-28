@@ -1,21 +1,19 @@
 # {{ ansible_managed }}
+{% set pip_links_host_list = pip_links | map(attribute='link') | map('netloc_no_port') | list %}
+{% set trusted_host_list = pip_links_host_list | union([ pip_default_index | netloc_no_port ]) %}
 
 [global]
 pre = {{ pip_enable_pre_releases }}
 timeout = {{ pip_timeout }}
-{% if pip_lock_to_internal_repo and pip_links | length > 0 %}
+{% if pip_lock_to_internal_repo | bool and pip_links | length > 0 %}
 no-index = true
-trusted-host =
-{% for pip_link in pip_links %}
-	{{ pip_link.link | netloc_no_port }}
-{% endfor %}
+{% else %}
+index-url = {{ pip_default_index }}
 {% endif %}
+trusted-host =
+{% for host in trusted_host_list %}
+        {{ host }}
+{% endfor %}
 
 [install]
 upgrade = {{ pip_upgrade }}
-{% if pip_lock_to_internal_repo and pip_links | length > 0 %}
-find-links =
-{% for pip_link in pip_links %}
-	{{ pip_link.link }}
-{% endfor %}
-{% endif %}
