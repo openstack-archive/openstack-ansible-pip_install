@@ -17,7 +17,7 @@ trusted-host =
 
 [install]
 upgrade = {{ pip_upgrade }}
-{% if pip_lock_to_internal_repo and pip_links | length > 0 %}
+{% if pip_links | length > 0 %}
 find-links =
 {% for pip_link in pip_links %}
         {{ pip_link.link }}
