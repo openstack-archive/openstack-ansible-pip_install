@@ -3,23 +3,30 @@
 {% set trusted_host_list = pip_links_host_list | union([ pip_default_index | netloc_no_port ]) %}
 
 [global]
-pre = {{ pip_enable_pre_releases }}
 timeout = {{ pip_timeout }}
-{% if pip_lock_to_internal_repo | bool and pip_links | length > 0 %}
-no-index = true
-{% else %}
 index-url = {{ pip_default_index }}
+{% if pip_install_upper_constraints is defined %}
+{%   set pip_constraint_list = pip_install_upper_constraints.split('--constraint') %}
+{%   if pip_constraint_list | length > 0 %}
+constraint =
+{%     for pip_constraint in pip_constraint_list %}
+        {{ pip_constraint.strip() }}
+{%     endfor %}
+{%   endif %}
 {% endif %}
+{% if trusted_host_list | length > 0 %}
 trusted-host =
-{% for host in trusted_host_list %}
+{%   for host in trusted_host_list %}
         {{ host }}
-{% endfor %}
+{%   endfor %}
+{% endif %}
 
 [install]
 upgrade = {{ pip_upgrade }}
+pre = {{ pip_enable_pre_releases }}
 {% if pip_links | length > 0 %}
 find-links =
-{% for pip_link in pip_links %}
+{%   for pip_link in pip_links %}
         {{ pip_link.link }}
-{% endfor %}
+{%   endfor %}
 {% endif %}
