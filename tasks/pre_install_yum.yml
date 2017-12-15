@@ -22,7 +22,7 @@
 - name: Install EPEL and yum priorities plugin
   package:
     name: "{{ pip_epel_prep_distro_packages }}"
-    state: "{{ pip_install_package_state }}"
+    state: present
   when:
     - user_external_repo_key is not defined
   tags:
