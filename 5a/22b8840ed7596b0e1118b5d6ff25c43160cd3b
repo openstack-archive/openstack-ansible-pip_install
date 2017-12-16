@@ -1,0 +1,9 @@
+Code-Review+2: Jimmy McCrory <jimmy.mccrory@gmail.com>
+Code-Review+2: Jesse Pretorius (odyssey4me) <jesse.pretorius@rackspace.co.uk>
+Workflow+1: Jesse Pretorius (odyssey4me) <jesse.pretorius@rackspace.co.uk>
+Verified+2: Zuul
+Submitted-by: Zuul
+Submitted-at: Sat, 16 Dec 2017 10:14:20 +0000
+Reviewed-on: https://review.openstack.org/528288
+Project: openstack/openstack-ansible-pip_install
+Branch: refs/heads/stable/pike
