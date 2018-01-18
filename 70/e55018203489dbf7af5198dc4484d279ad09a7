@@ -1,0 +1,9 @@
+Code-Review+2: Jean-Philippe Evrard <jean-philippe@evrard.me>
+Code-Review+2: Major Hayden <major@mhtx.net>
+Workflow+1: Major Hayden <major@mhtx.net>
+Verified+2: Zuul
+Submitted-by: Zuul
+Submitted-at: Thu, 18 Jan 2018 14:19:07 +0000
+Reviewed-on: https://review.openstack.org/535077
+Project: openstack/openstack-ansible-pip_install
+Branch: refs/heads/master
