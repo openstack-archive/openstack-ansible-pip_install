@@ -1,0 +1,9 @@
+Code-Review+2: Major Hayden <major@mhtx.net>
+Code-Review+2: Jesse Pretorius (odyssey4me) <jesse.pretorius@rackspace.co.uk>
+Workflow+1: Jesse Pretorius (odyssey4me) <jesse.pretorius@rackspace.co.uk>
+Verified+2: Zuul
+Submitted-by: Zuul
+Submitted-at: Thu, 08 Feb 2018 15:23:21 +0000
+Reviewed-on: https://review.openstack.org/541953
+Project: openstack/openstack-ansible-pip_install
+Branch: refs/heads/stable/ocata
