@@ -1,0 +1,9 @@
+Code-Review+2: Jesse Pretorius (odyssey4me) <jesse.pretorius@rackspace.co.uk>
+Code-Review+2: Markos Chandras (hwoarang) <mchandras@suse.de>
+Workflow+1: Markos Chandras (hwoarang) <mchandras@suse.de>
+Verified+2: Zuul
+Submitted-by: Zuul
+Submitted-at: Tue, 13 Feb 2018 13:10:02 +0000
+Reviewed-on: https://review.openstack.org/543816
+Project: openstack/openstack-ansible-pip_install
+Branch: refs/heads/stable/pike
