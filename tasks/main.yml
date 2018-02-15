@@ -24,21 +24,20 @@
   tags:
     - always
 
-- include: configure.yml
-  static: no
+- include_tasks: configure.yml
   when:
     - pip_configure | bool
   tags:
     - pip_install-config
 
-- include: pre_install.yml
+- include_tasks: pre_install.yml
   tags:
     - pip_install-install
 
-- include: "install_{{ pip_offline_install | ternary('offline', 'online') }}.yml"
+- include_tasks: "install_{{ pip_offline_install | ternary('offline', 'online') }}.yml"
   tags:
     - pip_install-install
 
-- include: install_source.yml
+- include_tasks: install_source.yml
   tags:
     - pip_install-install
