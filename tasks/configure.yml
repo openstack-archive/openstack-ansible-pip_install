@@ -13,28 +13,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-- name: Query pip-index
-  uri:
-    url: "{{ pip_default_index }}"
-    method: HEAD
-  failed_when: false
-  register: default_index
-  when:
-    - pip_lock_to_internal_repo | bool
-  tags:
-    - always
-
-- name: Check if pip-index is reachable
-  fail:
-    msg: |
-      The pip index "{{ pip_default_index }}" was unreachable
-      "{{ default_index.status }}"
-  when:
-    - pip_lock_to_internal_repo | bool
-    - default_index.status != 200
-  tags:
-    - always
-
 - name: Create pip config directory
   file:
     path: "{{ item }}"
