@@ -1,0 +1,9 @@
+Code-Review+2: Major Hayden <major@mhtx.net>
+Code-Review+2: Logan V <logan2211@gmail.com>
+Workflow+1: Logan V <logan2211@gmail.com>
+Verified+2: Zuul
+Submitted-by: Zuul
+Submitted-at: Thu, 22 Feb 2018 22:29:10 +0000
+Reviewed-on: https://review.openstack.org/547021
+Project: openstack/openstack-ansible-pip_install
+Branch: refs/heads/stable/pike
