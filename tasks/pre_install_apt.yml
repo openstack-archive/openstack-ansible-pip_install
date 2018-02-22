@@ -42,16 +42,20 @@
   tags:
     - add-repo-keys
 
+# When updating the cache in the apt_repository
+# task, and the update fails, a retry does not
+# detect a change the second attempt and therefore
+# does not update the cache, resulting in a changed
+# repo config, but no updated cache. To work around
+# this bug we implement the change of repo config
+# and the cache update as two seperate tasks.
 - name: Install repo for distro binaries
   apt_repository:
     repo: "{{ uca_repo }}"
     state: present
-    update_cache: yes
+    update_cache: no
     filename: "{{ uca_apt_source_list_filename | default(omit) }}"
   register: uca_add_repo
-  until: uca_add_repo|success
-  retries: 5
-  delay: 2
   when:
     - uca_enable | bool
   tags:
@@ -64,23 +68,46 @@
     url: "{{ item.url | default(omit) }}"
     state: "{{ item.state | default('present') }}"
   register: add_keys
-  until: add_keys|success
+  until: add_keys | success
   retries: 5
   delay: 2
   with_items: "{{ user_external_repo_keys_list }}"
   tags:
     - add-repo-keys
 
+# When updating the cache in the apt_repository
+# task, and the update fails, a retry does not
+# detect a change the second attempt and therefore
+# does not update the cache, resulting in a changed
+# repo config, but no updated cache. To work around
+# this bug we implement the change of repo config
+# and the cache update as two seperate tasks.
 - name: Install external repo manually (apt)
   apt_repository:
     repo: "{{ item.repo }}"
     state: "{{ item.state | default('present') }}"
-    update_cache: yes
+    update_cache: no
     filename: "{{ item.filename | default(omit) }}"
   register: use_external_repo_apt
-  until: use_external_repo_apt|success
-  retries: 5
-  delay: 2
   with_items: "{{ user_external_repos_list }}"
   tags:
+    - add-external-repo
+
+# Due to our Ansible strategy, a skipped task does not
+# have a dictionary result, so we have to cater to the
+# situation where either of the apt_repository tasks
+# may not have the results dict in the register. As
+# such we validate that the register is a mapping (dict).
+- name: Update Apt cache
+  apt:
+    update_cache: yes
+  when:
+    - (add_uca_repo is mapping and add_uca_repo | changed) or
+      (use_external_repo_apt is mapping and use_external_repo_apt | changed)
+  register: update_apt_cache
+  until: update_apt_cache | success
+  retries: 5
+  delay: 2
+  tags:
+    - add-uca-repo
     - add-external-repo
