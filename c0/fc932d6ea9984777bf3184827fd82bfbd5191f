@@ -1,0 +1,9 @@
+Code-Review+2: Major Hayden <major@mhtx.net>
+Code-Review+2: Kevin Carter (cloudnull) <kevin@cloudnull.com>
+Workflow+1: Kevin Carter (cloudnull) <kevin@cloudnull.com>
+Verified+2: Zuul
+Submitted-by: Zuul
+Submitted-at: Fri, 23 Feb 2018 16:36:08 +0000
+Reviewed-on: https://review.openstack.org/547448
+Project: openstack/openstack-ansible-pip_install
+Branch: refs/heads/stable/newton
