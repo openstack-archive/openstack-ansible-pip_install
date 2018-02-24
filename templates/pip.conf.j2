@@ -5,15 +5,6 @@
 [global]
 timeout = {{ pip_timeout }}
 index-url = {{ pip_default_index }}
-{% if pip_install_upper_constraints is defined %}
-{%   set pip_constraint_list = pip_install_upper_constraints.split('--constraint') %}
-{%   if pip_constraint_list | length > 0 %}
-constraint =
-{%     for pip_constraint in pip_constraint_list %}
-        {{ pip_constraint.strip() }}
-{%     endfor %}
-{%   endif %}
-{% endif %}
 {% if trusted_host_list | length > 0 %}
 trusted-host =
 {%   for host in trusted_host_list %}
