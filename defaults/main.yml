@@ -50,8 +50,6 @@ pip_packages:
   - setuptools
   - wheel
 
-pip_required_pip_packages: []
-
 ## APT Cache options
 cache_timeout: 600
 
