@@ -87,7 +87,7 @@
   apt:
     update_cache: yes
   when:
-    - (add_uca_repo is mapping and add_uca_repo | changed) or
+    - (uca_add_repo is mapping and uca_add_repo | changed) or
       (use_external_repo_apt is mapping and use_external_repo_apt | changed)
   register: update_apt_cache
   until: update_apt_cache | success
