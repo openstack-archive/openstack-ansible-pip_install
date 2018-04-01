@@ -65,7 +65,12 @@
 
 - name: pip cache install files locally
   local_action: >
-    command python /tmp/get-pip.py -d '{{ pip_tmp_packages | quote }}' {{ pip_get_pip_options }} {{ pip_packages | map('quote') | join (' ') }}
+    command python /tmp/get-pip.py
+                   -d '{{ pip_tmp_packages | quote }}'
+                   {{ (pip_install_upper_constraints is defined) |
+                      ternary('--constraint ' ~ pip_install_upper_constraints | default(''), '') }}
+                   {{ pip_get_pip_options }}
+                   {{ pip_packages | map('quote') | join (' ') }}
   changed_when: false
   register: pip_local_cache
   until: pip_local_cache | success

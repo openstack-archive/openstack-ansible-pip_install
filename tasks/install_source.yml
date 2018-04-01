@@ -16,7 +16,9 @@
 - block:
     - name: Install PIP
       command: >
-        python /opt/get-pip.py {{ pip_source_install_options }}
+        python /opt/get-pip.py {{ (pip_install_upper_constraints is defined) |
+                                  ternary('--constraint ' ~ pip_install_upper_constraints | default(''), '') }}
+                               {{ pip_source_install_options }}
                                {{ pip_get_pip_options }}
                                {{ pip_packages | map('quote') | join (' ') }}
       changed_when: false
@@ -28,9 +30,12 @@
   rescue:
     - name: Install PIP (fall back mode)
       command: >
-        python /opt/get-pip.py --isolated {{ pip_source_install_options }}
-                                          {{ pip_get_pip_options }}
-                                          {{ pip_packages | map('quote') | join (' ') }}
+        python /opt/get-pip.py --isolated
+                               {{ (pip_install_upper_constraints is defined) |
+                                  ternary('--constraint ' ~ pip_install_upper_constraints | default(''), '') }}
+                               {{ pip_source_install_options }}
+                               {{ pip_get_pip_options }}
+                               {{ pip_packages | map('quote') | join (' ') }}
       register: pip_install_fall_back
       until: pip_install_fall_back | success
       retries: 3
