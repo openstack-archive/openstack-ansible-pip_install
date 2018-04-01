@@ -62,3 +62,5 @@
       until: install_packages_fall_back | success
       retries: 5
       delay: 2
+  when:
+    - 'pip_required_pip_packages | length > 0'
