@@ -68,7 +68,7 @@
     command python /tmp/get-pip.py
                    -d '{{ pip_tmp_packages | quote }}'
                    {{ (pip_install_upper_constraints is defined) |
-                      ternary('--constraint ' ~ pip_install_upper_constraints, '') }}
+                      ternary('--constraint ' ~ pip_install_upper_constraints | default(''), '') }}
                    {{ pip_get_pip_options }}
                    {{ pip_packages | map('quote') | join (' ') }}
   changed_when: pip_local_cache.stdout.find('Successfully downloaded') != -1
