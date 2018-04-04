@@ -1,0 +1,8 @@
+Code-Review+2: Jean-Philippe Evrard <jean-philippe@evrard.me>
+Workflow+1: Jean-Philippe Evrard <jean-philippe@evrard.me>
+Verified+2: Zuul
+Submitted-by: Zuul
+Submitted-at: Wed, 04 Apr 2018 14:04:56 +0000
+Reviewed-on: https://review.openstack.org/558811
+Project: openstack/openstack-ansible-pip_install
+Branch: refs/heads/stable/ocata
