@@ -14,6 +14,7 @@ trusted-host =
 
 [install]
 upgrade = {{ pip_upgrade }}
+upgrade-strategy = {{ pip_upgrade_strategy }}
 pre = {{ pip_enable_pre_releases }}
 {% if pip_links | length > 0 %}
 find-links =
