@@ -1,7 +1,7 @@
 # {{ ansible_managed }}
 
 [global]
-pre = {{ pip_enable_pre_releases }}
+pre = {{ (pip_enable_pre_releases | bool) | lower }}
 timeout = {{ pip_timeout }}
 {% if pip_lock_to_internal_repo and pip_links | length > 0 %}
 no-index = true
@@ -12,7 +12,7 @@ trusted-host =
 {% endif %}
 
 [install]
-upgrade = {{ pip_upgrade }}
+upgrade = {{ (pip_upgrade | bool) | lower }}
 {% if pip_lock_to_internal_repo and pip_links | length > 0 %}
 find-links =
 {% for pip_link in pip_links %}
