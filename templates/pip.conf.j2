@@ -1,6 +1,7 @@
 # {{ ansible_managed }}
 
 [global]
+disable-pip-version-check = {{ (pip_disable_version_check | bool) | lower }}
 pre = {{ pip_enable_pre_releases }}
 timeout = {{ pip_timeout }}
 {% if pip_lock_to_internal_repo and pip_links | length > 0 %}
