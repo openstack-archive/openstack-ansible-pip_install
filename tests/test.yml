@@ -27,10 +27,6 @@
       stat:
         path: "{{ ansible_env.HOME}}/.cache/pip"
       register: pip_dir
-    - name: Check selfcheck json file
-      stat:
-        path: "{{ ansible_env.HOME}}/.cache/pip/selfcheck.json"
-      register: pip_selfcheck_file
     - name: Get pip path
       command: which pip
       register: pip_path
@@ -41,5 +37,4 @@
       assert:
         that:
           - "pip_dir.stat.isdir"
-          - "pip_selfcheck_file.stat.exists"
           - "pip_version.stdout | search('8.0.3')"

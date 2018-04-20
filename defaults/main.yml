@@ -101,6 +101,7 @@ pip_validate_certs: "yes"
 pip_lock_to_internal_repo: False
 
 # Options for pip global
+pip_disable_version_check: true
 pip_enable_pre_releases: true
 pip_timeout: 120
 
