@@ -65,6 +65,7 @@ pip_validate_certs: "yes"
 pip_configure: true
 
 # Options for pip global
+pip_disable_version_check: true
 pip_enable_pre_releases: true
 pip_timeout: 120
 
