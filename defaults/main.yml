@@ -70,6 +70,7 @@ pip_timeout: 120
 
 # Options for pip install
 pip_upgrade: true
+pip_upgrade_strategy: "only-if-needed"
 
 # Default index for pip to use
 pip_default_index: https://pypi.python.org/simple
