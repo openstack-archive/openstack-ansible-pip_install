@@ -3,6 +3,7 @@
 {% set trusted_host_list = pip_links_host_list | union([ pip_default_index | netloc_no_port ]) %}
 
 [global]
+disable-pip-version-check = {{ (pip_disable_version_check | bool) | lower }}
 timeout = {{ pip_timeout }}
 index-url = {{ pip_default_index }}
 {% if trusted_host_list | length > 0 %}
