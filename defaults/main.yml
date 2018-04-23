@@ -44,10 +44,11 @@ pip_install_distro_build_packages: []
 pip_install_build_packages: yes
 
 # This list var can be used to specify specific versions of pip, setuptools,
-# wheel and any other packages which must be installed when pip installs.
+# virtualenv, wheel and any other packages which must be installed when pip installs.
 pip_packages:
   - pip
   - setuptools
+  - virtualenv
   - wheel
 
 ## APT Cache options
