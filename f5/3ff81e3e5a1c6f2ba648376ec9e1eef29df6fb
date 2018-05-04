@@ -1,0 +1,9 @@
+Code-Review+1: Olivier Bourdon <olivierbourdon38@gmail.com>
+Code-Review+2: Jean-Philippe Evrard <jean-philippe@evrard.me>
+Workflow+1: Jesse Pretorius (odyssey4me) <jesse.pretorius@rackspace.co.uk>
+Verified+2: Zuul
+Submitted-by: Zuul
+Submitted-at: Fri, 04 May 2018 12:27:35 +0000
+Reviewed-on: https://review.openstack.org/566278
+Project: openstack/openstack-ansible-pip_install
+Branch: refs/heads/stable/ocata
