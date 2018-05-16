@@ -19,4 +19,3 @@ pip_install_distro_build_packages:
   - libffi-dev
   - libssl-dev
   - openssl
-  - python3-dev
