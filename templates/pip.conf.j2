@@ -13,8 +13,8 @@ trusted-host =
 {% endif %}
 
 [install]
-upgrade = {{ pip_upgrade }}
-pre = {{ pip_enable_pre_releases }}
+upgrade = {{ (pip_upgrade | bool) | lower }}
+pre = {{ (pip_enable_pre_releases | bool) | lower }}
 {% if pip_links | length > 0 %}
 find-links =
 {%   for pip_link in pip_links %}
