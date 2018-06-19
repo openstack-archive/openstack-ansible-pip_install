@@ -14,5 +14,8 @@ OpenStack-Ansible pip install
 Documentation for the project can be found at:
   https://docs.openstack.org/openstack-ansible-pip_install/latest/
 
+Release notes for the project can be found at:
+  https://docs.openstack.org/releasenotes/openstack-ansible-pip_install/
+
 The project home is at:
   https://launchpad.net/openstack-ansible
