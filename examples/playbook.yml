@@ -1,3 +1,4 @@
+---
 - name: Install and configure pip
   hosts: all
   user: root
