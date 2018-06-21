@@ -19,4 +19,3 @@ pip_install_distro_build_packages:
   - openssl
   - openssl-devel
   - python-devel
-  - yum-plugin-priorities
