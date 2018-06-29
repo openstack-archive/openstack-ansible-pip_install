@@ -1,0 +1,9 @@
+Code-Review+2: Mohammed Naser <mnaser@vexxhost.com>
+Code-Review+2: Markos Chandras (hwoarang) <mchandras@suse.de>
+Workflow+1: Markos Chandras (hwoarang) <mchandras@suse.de>
+Verified+2: Zuul
+Submitted-by: Zuul
+Submitted-at: Fri, 29 Jun 2018 07:28:11 +0000
+Reviewed-on: https://review.openstack.org/577531
+Project: openstack/openstack-ansible-pip_install
+Branch: refs/heads/master
