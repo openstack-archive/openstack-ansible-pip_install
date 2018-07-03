@@ -18,8 +18,8 @@
 pip_install_package_state: "latest"
 
 ## Path to pip download/installation script.
-pip_upstream_url: https://bootstrap.pypa.io/get-pip.py
-pip_fallback_url: https://raw.githubusercontent.com/pypa/get-pip/master/get-pip.py
+pip_upstream_url: https://bootstrap.pypa.io/3.2/get-pip.py
+pip_fallback_url: https://raw.githubusercontent.com/pypa/get-pip/master/3.2/get-pip.py
 
 # Allow the deployer to force pip to download locally to the deployment host
 # and copy it to the remote container for installation. Useful for environments
