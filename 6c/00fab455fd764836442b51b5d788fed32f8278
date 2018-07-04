@@ -1,0 +1,9 @@
+Code-Review+2: Markos Chandras (hwoarang) <mchandras@suse.de>
+Code-Review+2: Jean-Philippe Evrard <jean-philippe@evrard.me>
+Workflow+1: Jean-Philippe Evrard <jean-philippe@evrard.me>
+Verified+2: Zuul
+Submitted-by: Zuul
+Submitted-at: Wed, 04 Jul 2018 09:54:23 +0000
+Reviewed-on: https://review.openstack.org/579924
+Project: openstack/openstack-ansible-pip_install
+Branch: refs/heads/master
