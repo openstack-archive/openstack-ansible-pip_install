@@ -1,0 +1,9 @@
+Code-Review+2: Marc Gariépy (mgariepy) <gariepy.marc@gmail.com>
+Code-Review+2: Jean-Philippe Evrard <jean-philippe@evrard.me>
+Workflow+1: Jean-Philippe Evrard <jean-philippe@evrard.me>
+Verified+2: Zuul
+Submitted-by: Zuul
+Submitted-at: Thu, 05 Jul 2018 12:43:12 +0000
+Reviewed-on: https://review.openstack.org/580118
+Project: openstack/openstack-ansible-pip_install
+Branch: refs/heads/stable/ocata
