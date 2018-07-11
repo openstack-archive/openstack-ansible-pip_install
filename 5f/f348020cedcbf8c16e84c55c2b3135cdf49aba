@@ -1,0 +1,9 @@
+Code-Review+2: Jean-Philippe Evrard <jean-philippe@evrard.me>
+Code-Review+2: Kevin Carter (cloudnull) <kevin@cloudnull.com>
+Workflow+1: Kevin Carter (cloudnull) <kevin@cloudnull.com>
+Verified+2: Zuul
+Submitted-by: Zuul
+Submitted-at: Wed, 11 Jul 2018 19:48:18 +0000
+Reviewed-on: https://review.openstack.org/576786
+Project: openstack/openstack-ansible-pip_install
+Branch: refs/heads/master
