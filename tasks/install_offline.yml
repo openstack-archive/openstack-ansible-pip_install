@@ -22,7 +22,7 @@
         force: "yes"
         validate_certs: "{{ pip_validate_certs }}"
       register: get_pip_local
-      until: get_pip_local | success
+      until: get_pip_local  is success
       retries: 5
       delay: 2
       run_once: yes
@@ -40,9 +40,9 @@
         dest: "/tmp/get-pip.py"
         force: "yes"
         validate_certs: "{{ pip_validate_certs }}"
-      when: get_pip_local | failed
+      when: get_pip_local  is failed
       register: get_pip_local_fallback
-      until: get_pip_local_fallback | success
+      until: get_pip_local_fallback  is success
       retries: 5
       delay: 2
       run_once: yes
@@ -73,7 +73,7 @@
                    {{ pip_packages | map('quote') | join (' ') }}
   changed_when: pip_local_cache.stdout.find('Successfully downloaded') != -1
   register: pip_local_cache
-  until: pip_local_cache | success
+  until: pip_local_cache  is success
   retries: 3
   delay: 2
   notify:
