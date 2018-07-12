@@ -23,7 +23,7 @@
                                {{ pip_packages | map('quote') | join (' ') }}
       changed_when: pip_install.stdout.find('Successfully installed') != -1
       register: pip_install
-      until: pip_install  is success
+      until: pip_install is success
       retries: 3
       delay: 2
 
@@ -38,6 +38,6 @@
                                {{ pip_packages | map('quote') | join (' ') }}
       changed_when: pip_install_fall_back.stdout.find('Successfully installed') != -1
       register: pip_install_fall_back
-      until: pip_install_fall_back  is success
+      until: pip_install_fall_back is success
       retries: 3
       delay: 2
