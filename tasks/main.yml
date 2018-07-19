@@ -35,9 +35,22 @@
   tags:
     - pip_install-install
 
+- name: Determine PIP installation script
+  shell: >
+    if [[ $(set -o pipefail; pip --version 2>/dev/null | awk '{print $2}' | cut -d. -f1) -ge 7 ]]; then
+        echo "$(which pip) install --upgrade"
+    else
+        echo "python /opt/get-pip.py"
+    fi
+  args:
+    executable: /bin/bash
+  register: pip_install_script
+  changed_when: False
+
 - include: "install_{{ pip_offline_install | ternary('offline', 'online') }}.yml"
   tags:
     - pip_install-install
+  when: pip_install_script.stdout.find('get-pip.py') != -1 # skip get-pip.py if a suitable pip is installed
 
 - include: install_source.yml
   tags:

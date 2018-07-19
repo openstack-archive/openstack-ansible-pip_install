@@ -16,7 +16,7 @@
 - block:
     - name: Install PIP
       command: >
-        python /opt/get-pip.py {{ (pip_install_upper_constraints is defined) |
+        {{ pip_install_script.stdout }} {{ (pip_install_upper_constraints is defined) |
                                   ternary('--constraint ' ~ pip_install_upper_constraints | default(''), '') }}
                                {{ pip_source_install_options }}
                                {{ pip_get_pip_options }}
@@ -30,7 +30,7 @@
   rescue:
     - name: Install PIP (fall back mode)
       command: >
-        python /opt/get-pip.py --isolated
+         {{ pip_install_script.stdout }} --isolated
                                {{ (pip_install_upper_constraints is defined) |
                                   ternary('--constraint ' ~ pip_install_upper_constraints | default(''), '') }}
                                {{ pip_source_install_options }}

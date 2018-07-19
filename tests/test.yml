@@ -17,8 +17,9 @@
   hosts: localhost
   connection: local
   vars:
+    pip_get_pip_force: no
     pip_packages:
-      - "pip==8.0.3"
+      - "pip==9.0.3"
     pip_install_upper_constraints: "http://git.openstack.org/cgit/openstack/requirements/plain/upper-constraints.txt"
   roles:
     - role: "pip_install"
@@ -39,4 +40,4 @@
       assert:
         that:
           - "pip_dir.stat.isdir"
-          - "pip_version.stdout | search('8.0.3')"
+          - "pip_version.stdout | search('9.0.3')"
