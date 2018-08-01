@@ -57,6 +57,12 @@ cache_timeout: 600
 # is intercepting the certificates.
 pip_validate_certs: "yes"
 
+# Boolean variable to set whether the role should
+# install pip if it is found to be missing. There
+# are times when you may just want to only configure
+# pip, instead of also installing it.
+pip_install: true
+
 # Boolean variable to set whether pip.conf should be
 # implemented to adjust pip's default behaviour.
 # By default we do this, but sometimes we want to
