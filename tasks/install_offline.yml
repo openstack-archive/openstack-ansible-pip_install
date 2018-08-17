@@ -20,6 +20,7 @@
     dest: "/tmp/get-pip.py"
     force: "yes"
     validate_certs: "{{ pip_validate_certs }}"
+    mode: "0500"
   register: get_pip_local
   until: get_pip_local | success
   failed_when: false
@@ -39,6 +40,7 @@
     dest: "/tmp/get-pip.py"
     force: "yes"
     validate_certs: "{{ pip_validate_certs }}"
+    mode: "0500"
   when: get_pip_local | failed
   register: get_pip_local_fallback
   until: get_pip_local_fallback | success
