@@ -35,6 +35,6 @@
   changed_when: False
 
 - include_tasks: "install_{{ pip_offline_install | ternary('offline', 'online') }}.yml"
-  when: pip_install_script.find('get-pip.py') != -1 # skip get-pip.py if a suitable pip is installed
+  when: pip_install_script.stdout.find('get-pip.py') != -1 # skip get-pip.py if a suitable pip is installed
 
 - include_tasks: install_source.yml
