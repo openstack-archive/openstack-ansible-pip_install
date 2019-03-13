@@ -1,0 +1,11 @@
+Code-Review+1: Vieri <15050873171@163.com>
+Code-Review+1: Filippo Inzaghi <zhao.daqing@99cloud.net>
+Code-Review+1: wu.chunyang <wu.chunyang@99cloud.net>
+Code-Review+2: Mohammed Naser <mnaser@vexxhost.com>
+Workflow+1: Mohammed Naser <mnaser@vexxhost.com>
+Verified+2: Zuul
+Submitted-by: Zuul
+Submitted-at: Wed, 13 Mar 2019 17:51:57 +0000
+Reviewed-on: https://review.openstack.org/606767
+Project: openstack/openstack-ansible-pip_install
+Branch: refs/heads/master
