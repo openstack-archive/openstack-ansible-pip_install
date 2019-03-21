@@ -1,6 +1,6 @@
 # {{ ansible_managed }}
-{% set pip_links_host_list = pip_links | map(attribute='link') | map('netloc_no_port') | list %}
-{% set trusted_host_list = pip_links_host_list | union([ pip_default_index | netloc_no_port ]) %}
+{% set pip_links_host_list = pip_links | map(attribute='link') | map('urlsplit', 'hostname') | list %}
+{% set trusted_host_list = pip_links_host_list | union([ pip_default_index | urlsplit('hostname') ]) %}
 
 [global]
 disable-pip-version-check = {{ (pip_disable_version_check | bool) | lower }}
