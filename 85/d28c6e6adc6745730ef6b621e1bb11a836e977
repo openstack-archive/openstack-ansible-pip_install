@@ -1,0 +1,9 @@
+Code-Review+2: Dmitriy Rabotjagov (noonedeadpunk) <noonedeadpunk@ya.ru>
+Code-Review+2: Mohammed Naser <mnaser@vexxhost.com>
+Workflow+1: Mohammed Naser <mnaser@vexxhost.com>
+Verified+2: Zuul
+Submitted-by: Zuul
+Submitted-at: Mon, 08 Apr 2019 16:20:14 +0000
+Reviewed-on: https://review.openstack.org/650801
+Project: openstack/openstack-ansible-pip_install
+Branch: refs/heads/stable/stein
