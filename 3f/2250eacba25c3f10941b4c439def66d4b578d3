@@ -1,0 +1,8 @@
+Code-Review+2: Kevin Carter (cloudnull) <kevin@cloudnull.com>
+Workflow+1: Kevin Carter (cloudnull) <kevin@cloudnull.com>
+Verified+2: Zuul
+Submitted-by: Zuul
+Submitted-at: Tue, 09 Apr 2019 01:27:47 +0000
+Reviewed-on: https://review.openstack.org/651000
+Project: openstack/openstack-ansible-pip_install
+Branch: refs/heads/master
