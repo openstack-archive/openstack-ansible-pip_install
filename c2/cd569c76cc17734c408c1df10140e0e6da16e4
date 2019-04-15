@@ -1,0 +1,9 @@
+Code-Review+2: Guilherme  Steinmuller Pimentel <gsteinmuller@vexxhost.com>
+Code-Review+2: Kevin Carter (cloudnull) <kevin@cloudnull.com>
+Workflow+1: Kevin Carter (cloudnull) <kevin@cloudnull.com>
+Verified+2: Zuul
+Submitted-by: Zuul
+Submitted-at: Mon, 15 Apr 2019 15:42:18 +0000
+Reviewed-on: https://review.openstack.org/652331
+Project: openstack/openstack-ansible-pip_install
+Branch: refs/heads/stable/stein
