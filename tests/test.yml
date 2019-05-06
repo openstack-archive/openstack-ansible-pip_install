@@ -20,7 +20,7 @@
     pip_get_pip_force: no
     pip_packages:
       - "pip==9.0.3"
-    pip_install_upper_constraints: "http://git.openstack.org/cgit/openstack/requirements/plain/upper-constraints.txt"
+    pip_install_upper_constraints: "https://releases.openstack.org/constraints/upper/master"
   roles:
     - role: "pip_install"
   post_tasks:
