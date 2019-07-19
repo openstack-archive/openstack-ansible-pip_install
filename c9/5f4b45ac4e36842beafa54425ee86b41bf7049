@@ -1,0 +1,8 @@
+Code-Review+2: Mohammed Naser <mnaser@vexxhost.com>
+Workflow+1: Mohammed Naser <mnaser@vexxhost.com>
+Verified+2: Zuul
+Submitted-by: Zuul
+Submitted-at: Fri, 19 Jul 2019 12:36:13 +0000
+Reviewed-on: https://review.opendev.org/671623
+Project: openstack/openstack-ansible-pip_install
+Branch: refs/heads/master
