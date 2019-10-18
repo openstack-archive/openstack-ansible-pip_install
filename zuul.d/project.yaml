@@ -18,6 +18,10 @@
       - check-requirements
       - publish-openstack-sphinx-docs
       - release-notes-jobs
+    check:
+      jobs:
+        - openstack-ansible-functional-opensuse-15:
+            voting: true
     gate:
       jobs:
-        - openstack-ansible-functional-opensuse-150
+        - openstack-ansible-functional-opensuse-15
