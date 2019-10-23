@@ -1,0 +1,8 @@
+Code-Review+2: Jonathan Rosser <jonathan.rosser@rd.bbc.co.uk>
+Workflow+1: Jonathan Rosser <jonathan.rosser@rd.bbc.co.uk>
+Verified+2: Zuul
+Submitted-by: Zuul
+Submitted-at: Wed, 23 Oct 2019 18:41:50 +0000
+Reviewed-on: https://review.opendev.org/690692
+Project: openstack/openstack-ansible-pip_install
+Branch: refs/heads/master
