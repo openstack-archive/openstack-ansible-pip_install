@@ -1,0 +1,9 @@
+Code-Review+2: Amy Marrich (spotz) <amy@demarco.com>
+Code-Review+2: Jonathan Rosser <jonathan.rosser@rd.bbc.co.uk>
+Workflow+1: Jonathan Rosser <jonathan.rosser@rd.bbc.co.uk>
+Verified+2: Zuul
+Submitted-by: Zuul
+Submitted-at: Tue, 29 Oct 2019 21:30:00 +0000
+Reviewed-on: https://review.opendev.org/691922
+Project: openstack/openstack-ansible-pip_install
+Branch: refs/heads/stable/stein
