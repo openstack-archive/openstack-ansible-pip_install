@@ -1,6 +1,0 @@
----
-- name: Install and configure pip
-  hosts: all
-  user: root
-  roles:
-    - role: "pip_install"
